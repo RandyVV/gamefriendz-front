@@ -1,0 +1,6 @@
+@use 'src/styles/vars';
+
+h1 {
+  font-family: vars.$title-font;
+  color: vars.$alt-light-color;
+}
