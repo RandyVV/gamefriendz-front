@@ -2,9 +2,6 @@
 @use 'src/styles/vars';
 
 .menu {
-  // position: fixed;
-  // left: 0;
-  // bottom: 0;
   height: 100vh;
   width: vars.$menuWidth;
   padding: vars.$halfGutter 0;
@@ -27,10 +24,19 @@
     }
 
     &--active {
-      color: vars.$color;
-      box-shadow: inset -3px 0 0 vars.$color;
+      color: vars.$primary-color;
+      box-shadow: inset -3px 0 0 vars.$primary-color;
     }
   }
+}
+
+.toggler {
+  transition: all 0.3s ease-in-out;
+  
+  &--closed {
+    transform: translateX(-18em);
+  }
+    
 }
 
 

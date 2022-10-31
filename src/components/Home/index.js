@@ -1,5 +1,6 @@
 // == Import
 import './home.scss';
+import Card from 'src/components/Card';
 
 // == Composant
 function Home() {
@@ -7,6 +8,7 @@ function Home() {
     <div className="home">
       <h1>Home</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et ex suscipit faucibus.</p>
+      <Card />
     </div>
   );
 }

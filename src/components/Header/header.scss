@@ -1,8 +1,9 @@
 @use 'src/styles/vars';
 
 .header {
-  // position: fixed;
-  // width: 100%;
+  position: sticky;
+  top: 0px;
+  left:0px;
   display: flex;
   justify-content: space-between;
   align-items: center;

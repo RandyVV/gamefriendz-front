@@ -4,8 +4,8 @@ import './modale.scss';
 
 // == Composant
 function Modale() {
-  // const dispatch = useDispatch();
-  const isOpen = useSelector((state) => state.user.isOpen);
+  const dispatch = useDispatch();
+  const isModaleOpen = useSelector((state) => state.user.isOpen);
   // const emailValue = useSelector((state) => state.settings.email);
   // const passValue = useSelector((state) => state.settings.password);
 
@@ -27,7 +27,7 @@ function Modale() {
   // };
 
   return (
-    <div className={`settings ${!isOpen ? 'settings--closed' : ''}`}>
+    <div className={`settings ${!isModaleOpen ? 'settings--closed' : ''}`}>
       <form className="settings__form" /* onSubmit={handleSubmit} */ >
         <div className="field">
           <input

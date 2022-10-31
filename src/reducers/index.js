@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import recipesReducer from './games';
+import gamesReducer from './games';
 import userReducer from './user';
 
 const rootReducer = combineReducers({
-  recipes: recipesReducer,
+  games: gamesReducer,
   user: userReducer,
 });
 
