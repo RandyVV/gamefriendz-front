@@ -1,0 +1,23 @@
+@use 'src/styles/vars';
+
+.footer {
+  background-color: vars.$bg-dark-color;
+  color: white;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-legals {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-content {
+    text-align: center;
+  }
+}
+
+.legals-link:hover {
+  color: vars.$primary-color;
+}
