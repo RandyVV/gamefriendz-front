@@ -1,0 +1,46 @@
+@use 'src/styles/vars';
+
+.settings {
+  position: fixed;
+  top: 1.5em;
+  right: -1em;
+  margin-top: vars.$gutter;
+  // padding: vars.$gutter;
+  border-radius: 0.5rem 0 0 0.5rem;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  // On définit des propriétés de transition pour rendre le toggle plus smooth
+  // https://developer.mozilla.org/fr/docs/Web/CSS/transition
+  transition: all 0.3s ease-in-out;
+
+  &--closed {
+    background-color: rgba(0, 0, 0, 0.15);
+    transform: translateX(13rem);
+    }
+
+  &__form {
+    width: 12rem;
+    margin-left: vars.$gutter;
+  }
+
+  &__submit {
+    display: block;
+    width: 100%;
+    background-color: vars.$dark-color;
+    color: vars.$text-color;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+  }
+}
+
+.field {
+  &__input {
+    display: block;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    margin-bottom: 0.8rem;
+  }
+}

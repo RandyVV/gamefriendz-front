@@ -1,4 +1,5 @@
 // Generic
+$text-color:white;
 $primary-color: #476AED;
 $bg-dark-color: #151925;
 $dark-color: #340DA4;
@@ -26,3 +27,12 @@ $subtitle-font-weight: 700;
 // Post
 $post-text-color: #8892B0;
 $post-hover-color: #f7f7f7;
+
+@use 'sass:math';
+
+$menuWidth: 250px;
+$smallMenuWidth: 150px;
+$small: 700px;
+$gutter: 1.5rem;
+$halfGutter: math.div($gutter, 2);
+$color: #209CEE;
