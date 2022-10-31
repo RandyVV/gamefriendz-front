@@ -3,6 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
+// Global styles
+import './index.css';
+
 // == Import : local
 // Composants
 import App from 'src/components/App';
