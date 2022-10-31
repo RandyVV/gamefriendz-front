@@ -1,0 +1,61 @@
+@use 'sass:color';
+@use 'src/styles/vars';
+
+.menu {
+  position: relative;
+  height: 100vh;
+  width: vars.$menuWidth;
+  padding: vars.$halfGutter 0;
+  background-color: vars.$bg-dark-color;
+  box-shadow: inset -20px 0 20px -20px rgba(0,0,0,.75);
+  
+  @media (max-width: vars.$small) {
+    width: vars.$smallMenuWidth;
+    font-size: .85em;
+  }
+
+  &-link {
+    display: block;
+    padding: vars.$halfGutter vars.$gutter;
+    transition: color .2s, box-shadow .4s;
+    color: rgba(255,255,255,.75);
+
+    &:hover:not(&--active) {
+      color: white;
+    }
+
+    &--active {
+      color: vars.$primary-color;
+      box-shadow: inset -3px 0 0 vars.$primary-color;
+    }
+  }
+}
+
+.toggler {
+  transition: all 0.3s ease-in-out;
+
+  &--closed {
+    transform: translateX(-18em);
+  }
+    
+}
+
+
+// settings {
+//   position: fixed;
+//   top: 1.5em;
+//   right: -1em;
+//   margin-top: vars.$gutter;
+//   // padding: vars.$gutter;
+//   border-radius: 0.5rem 0 0 0.5rem;
+//   display: flex;
+//   background-color: rgba(0, 0, 0, 0.3);
+
+//   // On définit des propriétés de transition pour rendre le toggle plus smooth
+//   // https://developer.mozilla.org/fr/docs/Web/CSS/transition
+//   transition: all 0.3s ease-in-out;
+
+//   &--closed {
+//     background-color: rgba(0, 0, 0, 0.15);
+//     transform: translateX(13rem);
+//     }

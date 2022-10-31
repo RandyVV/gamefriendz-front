@@ -1,0 +1,39 @@
+// Generic
+$text-color:white;
+$primary-color: #476AED;
+$bg-dark-color: #151925;
+$dark-color: #340DA4;
+$alt-color:#6B0AB8;
+$light-alt-color:#791fc2;
+$alt-light-color: #F62992;
+$light-color: #50CFEF;
+$gutter: 2rem;
+
+// Global
+$global-font: 'Play', sans-serif;
+$global-font-weight: 300;
+
+// Title
+$title-font: 'Bungee Shade';
+$title-font-weight: 700;
+$title-color: #AEB6D1;
+$title-font-size: 3em;
+
+// Subtitle
+$subtitle-color: #5D9CE2;
+$subtitle-font: 'Play', sans-serif;
+$subtitle-font-size: 1.5em;
+$subtitle-font-weight: 700;
+
+// Post
+$post-text-color: #8892B0;
+$post-hover-color: #f7f7f7;
+
+@use 'sass:math';
+
+$menuWidth: 250px;
+$smallMenuWidth: 150px;
+$small: 700px;
+$gutter: 1.5rem;
+$halfGutter: math.div($gutter, 2);
+$color: #209CEE;

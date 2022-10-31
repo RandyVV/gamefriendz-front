@@ -1,0 +1,10 @@
+.app {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  &-content {
+    display: flex;
+    
+  }
+}
