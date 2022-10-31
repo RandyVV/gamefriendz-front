@@ -10,7 +10,6 @@ function Header() {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    console.log('[UTILISATEUR] : Je veux cacher/afficher le formulaire de connexion');
     dispatch(toggleLoginForm());
   };
 

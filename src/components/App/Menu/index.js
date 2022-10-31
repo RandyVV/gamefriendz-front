@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import './style.scss';
+import './menu.scss';
 
 function Menu() {
 //   const recipes = useSelector((state) => state.recipes.list);
@@ -20,11 +20,27 @@ function Menu() {
       {isLogged && (
         <NavLink
           className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
-          to="/favorites"
+          to="/profile"
         >
-          Favorites
+          Profil
         </NavLink>
       )}
+
+      <NavLink
+        className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
+        end
+        to="/games"
+      >
+        Jeux
+      </NavLink>
+
+      <NavLink
+        className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
+        end
+        to="/games"
+      >
+        Recherche de Joueur
+      </NavLink>
 
       {/* {recipes.map((recipe) => (
         <NavLink
