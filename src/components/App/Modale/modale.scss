@@ -9,9 +9,6 @@
   border-radius: 0.5rem 0 0 0.5rem;
   display: flex;
   background-color: rgba(0, 0, 0, 0.3);
-
-  // On définit des propriétés de transition pour rendre le toggle plus smooth
-  // https://developer.mozilla.org/fr/docs/Web/CSS/transition
   transition: all 0.3s ease-in-out;
 
   &--closed {
