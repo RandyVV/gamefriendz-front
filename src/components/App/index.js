@@ -12,10 +12,8 @@ function App() {
     <div className="app">
       <Header />
       <Modale />
-      <div className="app-content">
-        <Menu />
-        <Home />
-      </div>
+      <Menu />
+      <Home />
       <Footer />
     </div>
   );

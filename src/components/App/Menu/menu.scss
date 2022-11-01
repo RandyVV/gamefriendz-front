@@ -2,8 +2,8 @@
 @use 'src/styles/vars';
 
 .menu {
-  position: relative;
-  height: 100vh;
+  position: fixed;
+  height: 90vh;
   width: vars.$menuWidth;
   padding: vars.$halfGutter 0;
   background-color: vars.$bg-dark-color;

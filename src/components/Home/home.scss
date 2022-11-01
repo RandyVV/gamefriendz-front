@@ -1,10 +1,5 @@
 @use 'src/styles/vars';
 
-.home {
-  display: flex;
-  flex-flow: column wrap;
-}
-
 h1 {
   font-family: vars.$title-font;
   color: vars.$alt-light-color;
