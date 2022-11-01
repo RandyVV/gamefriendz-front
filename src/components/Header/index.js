@@ -5,7 +5,6 @@ import logoDesktop from '../../assets/images/LogoManette.png';
 import { toggleLoginForm } from '../../actions/user';
 import { toggleMenu } from '../../actions/games';
 
-
 // == Composant
 function Header() {
   const dispatch = useDispatch();
