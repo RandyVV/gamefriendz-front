@@ -1,6 +1,8 @@
+/* eslint-disable max-len */
 // == Import
 import './home.scss';
 import Card from 'src/components/Card';
+import { useSelector } from 'react-redux';
 import windowspic from 'src/assets/images/platform/windows.png';
 import pspic from 'src/assets/images/platform/ps-logo.png';
 import xboxpic from 'src/assets/images/platform/xbox-logo.png';
@@ -10,6 +12,7 @@ import discordpic from 'src/assets/images/discord-logo.png';
 
 // == Composant
 function Home() {
+  const games = useSelector((state) => state.games.games);
   return (
     <div className="home">
       <div className="home-wrapper">
@@ -33,10 +36,7 @@ function Home() {
       </div>
       <h1 className="home-title">Les Jeux du moment</h1>
       <div className="home-cards">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {games.map((game) => <Card key={game.id} {...game} />)}
       </div>
     </div>
   );
