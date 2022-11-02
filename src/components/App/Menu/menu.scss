@@ -2,13 +2,12 @@
 @use 'src/styles/vars';
 
 .menu {
-  position: fixed;
-  height: 100vh;
-  z-index: -1;
+  min-height: 100vh;
   width: vars.$menuWidth;
   padding: vars.$halfGutter 0;
   background-color: vars.$bg-dark-color;
   box-shadow: inset -20px 0 20px -20px rgba(0,0,0,.75);
+  
   
   @media (max-width: vars.$small) {
     width: vars.$smallMenuWidth;
@@ -33,6 +32,10 @@
 }
 
 .toggler {
+  position: fixed;
+  top: 3em;
+  left: 0;
+  z-index: -1;
   transition: all 0.3s ease-in-out;
 
   &--closed {

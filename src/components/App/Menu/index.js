@@ -33,7 +33,7 @@ function Menu() {
           end
           to="/games"
         >
-          Jeux
+          Recherche de Jeux
         </NavLink>
 
         <NavLink
