@@ -4,6 +4,7 @@
 .menu {
   position: fixed;
   height: 100vh;
+  z-index: -1;
   width: vars.$menuWidth;
   padding: vars.$halfGutter 0;
   background-color: vars.$bg-dark-color;

@@ -1,5 +1,6 @@
 // == Import
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 import Home from '../Home';
@@ -9,6 +10,11 @@ import Menu from './Menu';
 
 // == Composant
 function App() {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <div className="app">
       <Header />
