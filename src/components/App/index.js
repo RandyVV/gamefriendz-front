@@ -7,6 +7,7 @@ import Home from '../Home';
 import Modale from './Modale';
 import './app.scss';
 import Menu from './Menu';
+import Search from '../Search';
 
 // == Composant
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Menu />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/games" element={<Search />} />
       </Routes>
       <Footer />
     </div>
