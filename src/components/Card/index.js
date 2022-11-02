@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 function Card() {
   return (
 
-    <div className="max-w-sm bg-darkbg rounded-lg border border-gray-200 shadow-md">
+    <div className="max-w-sm mb-8 bg-darkbg rounded-lg border border-gray-200 shadow-md">
       <a href="#">
         <img className="rounded-t-lg" src={lolpic} alt="" />
       </a>

@@ -2,8 +2,8 @@
 
 .footer {
   background-color: vars.$bg-dark-color;
-  bottom:0;
   width:100%;
+  z-index: 1;
   color: white;
   padding: 1em;
   display: flex;
