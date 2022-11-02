@@ -1,4 +1,5 @@
 // == Import
+import { Routes, Route } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import Home from '../Home';
@@ -12,10 +13,10 @@ function App() {
     <div className="app">
       <Header />
       <Modale />
-      <div className="app-content">
-        <Menu />
-        <Home />
-      </div>
+      <Menu />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
       <Footer />
     </div>
   );
