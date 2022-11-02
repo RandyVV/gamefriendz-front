@@ -6,6 +6,7 @@ import './menu.scss';
 function Menu() {
   const isLogged = useSelector((state) => state.user.isLogged);
   const isMenuOpen = useSelector((state) => state.games.isMenuOpen);
+  const profileId = useSelector((state) => state.user.id);
 
   return (
     <div className={`toggler ${!isMenuOpen ? 'toggler--closed' : ''}`}>
@@ -21,7 +22,7 @@ function Menu() {
         {isLogged && (
           <NavLink
             className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
-            to="/profile"
+            to={`/profile/${profileId}`}
           >
             Profil
           </NavLink>
