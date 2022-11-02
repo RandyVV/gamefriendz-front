@@ -2,7 +2,6 @@
 
 .footer {
   background-color: vars.$bg-dark-color;
-  position:fixed;
   bottom:0;
   width:100%;
   color: white;
@@ -10,6 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
 
   &-legals {
     display: flex;
@@ -19,6 +19,7 @@
   &-content {
     text-align: center;
   }
+
 }
 
 .legals-link:hover {
