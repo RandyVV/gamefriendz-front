@@ -1,4 +1,5 @@
 // == Import
+import { Routes, Route } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import Home from '../Home';
@@ -13,7 +14,9 @@ function App() {
       <Header />
       <Modale />
       <Menu />
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
       <Footer />
     </div>
   );
