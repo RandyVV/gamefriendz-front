@@ -7,11 +7,9 @@ import Home from '../Home';
 import Modale from './Modale';
 import './app.scss';
 import Menu from './Menu';
-<<<<<<< HEAD
 import Search from '../Search';
-=======
 import Contact from './Contact';
->>>>>>> 91806f2afe3e97b45b595940227e4441431f7f49
+import About from './About';
 
 // == Composant
 function App() {
@@ -27,11 +25,9 @@ function App() {
       <Menu />
       <Routes>
         <Route path="/" element={<Home />} />
-<<<<<<< HEAD
         <Route path="/games" element={<Search />} />
-=======
         <Route path="/contact" element={<Contact />} />
->>>>>>> 91806f2afe3e97b45b595940227e4441431f7f49
+        <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
     </div>
