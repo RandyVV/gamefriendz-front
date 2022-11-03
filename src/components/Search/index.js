@@ -26,9 +26,9 @@ function Search() {
 
   if (route === '/games') {
     /** useEffect qui fait la requete a l'api pour récuperer les jeux au montage du composant */
-    // useEffect(() => {
-    // dispatch(fetchGames());
-    // }, []);
+    useEffect(() => {
+      dispatch(fetchGames());
+    }, []);
 
     return (
       <div className="search">
@@ -76,9 +76,9 @@ function Search() {
             <button className="form-button" type="submit"> Rechercher </button>
           </form>
         </div>
-        <div className="home-cards">
+        {/* <div className="home-cards">
           {games.map((game) => <Card key={game.id} {...game} />)}
-        </div>
+        </div> */}
       </div>
     );
   }

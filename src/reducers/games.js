@@ -1,4 +1,9 @@
-import { CHANGE_SELECT_VALUE, CHANGE_VALUE, SAVE_GAMES, TOGGLE_MENU } from '../actions/games';
+import {
+  CHANGE_SELECT_VALUE,
+  CHANGE_VALUE,
+  SAVE_GAMES,
+  TOGGLE_MENU,
+} from '../actions/games';
 import datas from '../datas/gamesDatas';
 
 const initialState = {
@@ -19,7 +24,7 @@ function reducer(state = initialState, action = {}) {
     case SAVE_GAMES:
       return {
         ...state,
-        games: action.games,
+        allGames: action.games,
       };
     case CHANGE_VALUE:
       return {

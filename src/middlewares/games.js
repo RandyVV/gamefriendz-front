@@ -4,7 +4,7 @@ import { FETCH_GAMES, SEARCH_GAME, saveGames } from '../actions/games';
 const games = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_GAMES: {
-      axios.get('8080/api/games')
+      axios.get('http://randy-venant-valery.vpnuser.lan:8080/api/games')
         .then((response) => {
           console.log(response.data);
           // Callback executée lorsque la promesse est tenue
