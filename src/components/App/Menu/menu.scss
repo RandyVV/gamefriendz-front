@@ -8,6 +8,7 @@
   padding: vars.$halfGutter 0;
   background-color: vars.$bg-dark-color;
   box-shadow: inset -20px 0 20px -20px rgba(0,0,0,.75);
+  z-index: -1;
   
   
   @media (max-width: vars.$small) {

@@ -1,0 +1,73 @@
+@use 'src/styles/vars';
+
+
+.form-wrapper {
+  background-color: rgb(0, 0, 0, 0.1);
+  border: solid 1px vars.$dark-color;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px vars.$dark-color;
+  width:60%;
+  margin: 2em auto;
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+  margin: 2em auto;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+
+  &-label {
+    width: 60%;
+    display: flex;
+    flex-flow: column wrap;
+    font-size: 1.5em;
+  }
+
+  &-input {
+    width: 100%;
+    height: vars.$gutter *1.2;
+    margin-bottom: vars.$gutter *0.8;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid vars.$light-color;
+    font-size: 0.7em;
+  }
+
+  &-selector {
+    display: flex;
+    flex-flow: column wrap;
+    font-size: 1.5em;
+  }
+
+  &-platform {
+    width: 30%;
+    height: vars.$gutter *1.2;
+    margin-bottom: vars.$gutter *0.8;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid vars.$light-color;
+    font-size: 0.7em;
+  }
+
+  &-options {
+    background-color: vars.$primary-color;
+  }
+
+  &-button {
+    font-family: vars.$global-font;
+    margin:0.5em;
+    background-color: vars.$primary-color;
+    border: none;
+    border-radius: 0.3em;
+    box-shadow: 0px 0px 2px #8ea1ea;
+    color: white;
+    height: 2em;
+    width: 6em;
+
+    &:hover {
+        box-shadow: 0px 0px 4px #8ea1ea;
+    }
+  }
+}
