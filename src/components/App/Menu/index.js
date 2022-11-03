@@ -33,26 +33,16 @@ function Menu() {
           end
           to="/games"
         >
-          Jeux
+          Recherche de Jeux
         </NavLink>
 
         <NavLink
           className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
           end
-          to="/player"
+          to="/players"
         >
           Recherche de Joueur
         </NavLink>
-
-        {/* {recipes.map((recipe) => (
-          <NavLink
-            key={recipe.id}
-            className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
-            to={`/recipe/${recipe.slug}`}
-          >
-            {recipe.title}
-          </NavLink>
-        ))} */}
       </nav>
     </div>
   );

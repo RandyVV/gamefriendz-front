@@ -1,5 +1,8 @@
 @use 'src/styles/vars';
 
+.search {
+  min-height: 65vh;
+}
 
 .form-wrapper {
   background-color: rgb(0, 0, 0, 0.1);
@@ -53,5 +56,21 @@
 
   &-options {
     background-color: vars.$primary-color;
+  }
+
+  &-button {
+    font-family: vars.$global-font;
+    margin:0.5em;
+    background-color: vars.$primary-color;
+    border: none;
+    border-radius: 0.3em;
+    box-shadow: 0px 0px 2px #8ea1ea;
+    color: white;
+    height: 2em;
+    width: 6em;
+
+    &:hover {
+        box-shadow: 0px 0px 4px #8ea1ea;
+    }
   }
 }

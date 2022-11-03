@@ -12,7 +12,7 @@ import discordpic from 'src/assets/images/discord-logo.png';
 
 // == Composant
 function Home() {
-  const games = useSelector((state) => state.games.games);
+  const games = useSelector((state) => state.games.allGames);
   return (
     <div className="home">
       <div className="home-wrapper">
