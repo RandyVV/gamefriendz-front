@@ -25,6 +25,7 @@ function Search() {
               <option className="form-options" value="mobile">Mobile</option>
             </select>
           </label>
+          <button className="form-button" type="submit"> Rechercher </button>
         </form>
       </div>
 
