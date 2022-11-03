@@ -16,6 +16,16 @@ function Game() {
   // has_multiplayer_mode,
   // releases,
 
+  const { id } = useParams();
+  const intId = parseInt(id, 10);
+
+  /**
+ *  on trouve le jeu voulu dans la liste des jeux
+ * @param {Array} games - tous les jeux
+ * @param {string} searchedId - l'ID du jeu recherché
+ * @return {Object} - Le jeu trouvé
+ */
+
   function findGame(games, searchedId) {
     const game = games.find((testedGame) => {
       return testedGame.id === searchedId;
@@ -23,15 +33,12 @@ function Game() {
     return game;
   }
 
-  const { id } = useParams;
-
-  const game = useSelector((state) => findGame(state.games.games, id));
-
+  const game = useSelector((state) => findGame(state.games.allGames, intId));
   return (
     <div className="game">
       <div className="max-w-4xl mb-8 bg-darkbg rounded-lg border border-gray-200 shadow-md">
         <a href="#">
-          <img className="rounded-t-lg" src={game.picture} alt="" />
+          <img className="rounded-t-lg w-full" src={game.picture} alt="" />
         </a>
         <div className="p-5">
           <a href="#">
@@ -43,7 +50,7 @@ function Game() {
             <li><img className="w-7 h-7" src={windowspic} alt="" /></li>
           </ul>
           <p className="mb-3 font-normal text-white">Date de sortie :</p>
-          <p className="mb-3 font-normal text-white">{game.release.release_date}</p>
+          <p className="mb-3 font-normal text-white">X</p>
           <p className="mb-3 font-normal text-white">Multijoueurs :</p>
           <p className="mb-3 font-normal text-white">{game.has_multiplayer_mode}</p>
           <div className="flex flex-row-reverse">
@@ -59,7 +66,9 @@ function Game() {
   );
 }
 
-/*  Game.propTypes = {
+/*
+
+Game.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   picture: PropTypes.string.isRequired,
