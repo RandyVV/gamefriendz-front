@@ -9,6 +9,7 @@ import './app.scss';
 import Menu from './Menu';
 import Search from '../Search';
 import Contact from './Contact';
+import Game from '../Game';
 
 // == Composant
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/games" element={<Search />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/game/:id" element={<Game />} />
       </Routes>
       <Footer />
     </div>
