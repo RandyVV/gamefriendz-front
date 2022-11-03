@@ -43,10 +43,6 @@ function reducer(state = initialState, action = {}) {
     case CHANGE_FIELD_VALUE:
       return {
         ...state,
-        // On accède à la clef de manière dynamique avec la notation []
-        // => email: 'la valeur...',
-        // OU
-        // => password: 'la valeur...',
         [action.field]: action.value,
       };
     default:
