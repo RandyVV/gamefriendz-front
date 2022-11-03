@@ -4,9 +4,9 @@ import './contact.scss';
 // == Composant
 function Contact() {
   return (
-    <div className="contact">
-      <h1 className="titre">Contactez-nous !</h1>
-      <form>
+    <div className="formulaire">
+      <h1 className="home-title">Contactez-nous !</h1>
+      <form className="home-title">
         <div className="mb-2 w-full">
           <label htmlFor="email" className="block text-lg font-medium text-white">Votre email
             <input type="email" id="email" className="bg-darkbg shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="nom@gmail.com" required="" />

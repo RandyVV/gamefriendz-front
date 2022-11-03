@@ -10,6 +10,7 @@ import Menu from './Menu';
 import Search from '../Search';
 import Contact from './Contact';
 import About from './About';
+import Login from './Login';
 
 // == Composant
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/games" element={<Search />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </div>
