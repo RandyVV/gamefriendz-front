@@ -5,7 +5,7 @@ import './contact.scss';
 function Contact() {
   return (
     <div className="contact">
-      <h1 className="titre">Contactez-nous !</h1>
+      <h1 className="home-title">Contactez-nous !</h1>
       <form>
         <div className="mb-2 w-full">
           <label htmlFor="email" className="block text-lg font-medium text-white">Votre email
