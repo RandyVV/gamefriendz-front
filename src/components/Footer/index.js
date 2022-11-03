@@ -6,7 +6,7 @@ import './footer.scss';
 // == Composant
 function Footer() {
   return (
-    <footer className="p-4 bg-darkbg sm:p-6">
+    <footer className="p-4 z-0 bg-darkbg sm:p-6">
       <div className="md:flex md:justify-between">
         <div className="mb-6 md:mb-0">
           <Link to="/" className="flex items-center">
@@ -19,10 +19,10 @@ function Footer() {
             <h2 className="mb-6 text-sm font-semibold text-white uppercase ">Suivez-nous !</h2>
             <ul className="text-white">
               <li className="mb-4">
-                <Link to="/github" className="hover:underline ">Github</Link>
+                <Link to="/github" className="hover:underline hover:text-primary ">Github</Link>
               </li>
               <li>
-                <Link to="/discord" className="hover:underline">Discord</Link>
+                <Link to="/discord" className="hover:underline hover:text-primary">Discord</Link>
               </li>
             </ul>
           </div>
@@ -30,10 +30,10 @@ function Footer() {
             <h2 className="mb-6 text-sm font-semibold text-white uppercase">Nous Contacter</h2>
             <ul className="text-white">
               <li className="mb-4">
-                <Link to="/contact" className="hover:underline">Contact </Link>
+                <Link to="/contact" className="hover:underline hover:text-primary">Contact </Link>
               </li>
               <li className="mb-4">
-                <Link to="/about" className="hover:underline">A propos</Link>
+                <Link to="/about" className="hover:underline hover:text-primary">A propos</Link>
               </li>
             </ul>
           </div>
@@ -41,7 +41,7 @@ function Footer() {
             <h2 className="mb-6 text-sm font-semibold text-white uppercase">Mentions Légales</h2>
             <ul className="text-white">
               <li>
-                <Link to="/cgu" className="hover:underline">Conditions Générales d'Utilisation</Link>
+                <Link to="/cgu" className="hover:underline hover:text-primary">Conditions Générales d'Utilisation</Link>
               </li>
             </ul>
           </div>
