@@ -19,7 +19,7 @@ export default [
   {
     id: 150,
     title: 'League of Legend',
-    picture: 'https://www.warlegend.net/wp-content/uploads/league-of-legends.jpg',
+    picture: 'https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_LeagueofLegends_RiotGames_S1_2560x1440-ee500721c06da3ec1e5535a88588c77f',
     description: 'League of Legends est un jeu vidéo sorti en 2009 de type arène de bataille en ligne, free-to-play, développé et édité par Riot Games sur Windows et Mac OS.',
     has_multiplayer_mode: true,
     releases: [

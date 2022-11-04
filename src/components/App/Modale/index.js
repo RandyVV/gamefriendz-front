@@ -1,6 +1,6 @@
 // == Import// == Import
 import { useDispatch, useSelector } from 'react-redux';
-import { changeFieldValue, login } from '../../../actions/user';
+import { changeFieldValue, login, toggleLoginForm } from '../../../actions/user';
 import './modale.scss';
 
 // == Composant
@@ -11,6 +11,10 @@ function Modale() {
 
   const handleChange = (event) => {
     dispatch(changeFieldValue(event.target.name, event.target.value));
+  };
+
+  const handleLoginClick = () => {
+    dispatch(toggleLoginForm());
   };
 
   const handleSubmit = (event) => {
@@ -41,7 +45,7 @@ function Modale() {
             onChange={handleChange}
           />
         </div>
-        <button type="submit" className="settings__submit">Envoyer</button>
+        <button type="submit" onClick={handleLoginClick} className="settings__submit">Envoyer</button>
       </form>
     </div>
   );
