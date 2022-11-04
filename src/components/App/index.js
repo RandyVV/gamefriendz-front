@@ -11,6 +11,7 @@ import Search from '../Search';
 import Contact from './Contact';
 import About from './About';
 import Login from './Login';
+import Signup from './Signup';
 
 // == Composant
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
       <Footer />
     </div>
