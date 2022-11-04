@@ -1,9 +1,8 @@
 // == Import
 import './search.scss';
 import Card from 'src/components/Card';
-import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeSelectValue, changeValue, fetchGames } from '../../actions/games';
+import { changeSelectValue, changeValue, searchGame } from '../../actions/games';
 
 // == Composant
 function Search() {
@@ -13,7 +12,7 @@ function Search() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // dispatch();
+    dispatch(searchGame());
   };
 
   const handelChange = (event) => {
@@ -25,11 +24,6 @@ function Search() {
   };
 
   if (route === '/games') {
-    /** useEffect qui fait la requete a l'api pour récuperer les jeux au montage du composant */
-    // useEffect(() => {
-    // dispatch(fetchGames());
-    // }, []);
-
     return (
       <div className="search">
         <div className="form-wrapper">
@@ -76,9 +70,9 @@ function Search() {
             <button className="form-button" type="submit"> Rechercher </button>
           </form>
         </div>
-        <div className="home-cards">
+        {/* <div className="home-cards">
           {games.map((game) => <Card key={game.id} {...game} />)}
-        </div>
+        </div> */}
       </div>
     );
   }
