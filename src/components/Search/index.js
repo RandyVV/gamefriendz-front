@@ -1,6 +1,7 @@
 // == Import
 import './search.scss';
 import Card from 'src/components/Card';
+import PlayerCard from 'src/components/PlayerCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeSelectValue, changeValue, searchGame } from '../../actions/games';
 
@@ -73,6 +74,15 @@ function Search() {
         {/* <div className="home-cards">
           {games.map((game) => <Card key={game.id} {...game} />)}
         </div> */}
+        <div className="player-cards">
+          <PlayerCard />
+          <PlayerCard />
+          <PlayerCard />
+          <PlayerCard />
+          <PlayerCard />
+          <PlayerCard />
+          <PlayerCard />
+        </div>
       </div>
     );
   }
