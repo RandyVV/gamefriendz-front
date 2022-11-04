@@ -1,5 +1,4 @@
 // == Import
-import './about.scss';
 import avatarHomme from 'src/assets/images/avatars/avatar-homme.png';
 import avatarFemme from 'src/assets/images/avatars/avatar-femme.png';
 
