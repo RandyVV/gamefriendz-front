@@ -11,7 +11,7 @@ const initialState = {
   pseudo: '',
   id: '',
   token: '',
-  isLogged: false,
+  isLogged: true,
   isOpen: false,
 };
 
