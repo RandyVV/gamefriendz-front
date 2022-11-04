@@ -1,15 +1,21 @@
 // == Import
 import './search.scss';
+import { useEffect } from 'react';
 import Card from 'src/components/Card';
 import PlayerCard from 'src/components/PlayerCard';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeSelectValue, changeValue, searchGame } from '../../actions/games';
+import { changeSelectValue, changeValue, fetchGames, searchGame } from '../../actions/games';
 
 // == Composant
 function Search() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games.allGames);
   const route = window.location.pathname;
+
+  /** useEffect qui fait la requete a l'api pour récuperer les jeux au montage du composant */
+  useEffect(() => {
+    dispatch(fetchGames());
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
