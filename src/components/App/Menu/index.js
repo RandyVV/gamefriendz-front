@@ -43,6 +43,20 @@ function Menu() {
         >
           Recherche de Joueur
         </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
+          end
+          to="/login"
+        >
+          Se connecter
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
+          end
+          to="/signup"
+        >
+          S'inscrire
+        </NavLink>
       </nav>
     </div>
   );
