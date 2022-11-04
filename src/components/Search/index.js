@@ -74,7 +74,9 @@ function Search() {
         {/* <div className="home-cards">
           {games.map((game) => <Card key={game.id} {...game} />)}
         </div> */}
-        <div className="home-cards">
+        <div className="player-cards">
+          <PlayerCard />
+          <PlayerCard />
           <PlayerCard />
           <PlayerCard />
           <PlayerCard />

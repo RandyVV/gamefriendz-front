@@ -1,17 +1,15 @@
 @use 'src/styles/vars';
 
 .playercard {
-  width: 20%;
   height: 100%;
-  margin: 1em auto 0;
+  margin: 1em auto;
+  padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   color: vars.$light-color;
 
   &-wrapper {
     background-color: vars.$bg-dark-color;
-    width: 300px;
+    width: 23rem;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -46,10 +44,9 @@
     background-color: vars.$light-color;
     border: 1px solid vars.$light-color;
     border-radius: 3px;
-    color: #231E39;
-    font-family: Montserrat, sans-serif;
+    color: vars.$bg-dark-color;
     font-weight: 500;
-    padding: 10px 25px;
+    padding: 8px 25px;
     margin-bottom: 1em;
 
     &:hover {
