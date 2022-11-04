@@ -27,7 +27,7 @@ function Home() {
   // eslint-disable-next-line consistent-return
   function filteredGames(status, loadedGames) {
     if (status === false) {
-      const results = loadedGames.filter((loadedGame) => loadedGame.id < 5);
+      const results = loadedGames.filter((loadedGame) => loadedGame.id <= 5);
       return results;
     }
   }
