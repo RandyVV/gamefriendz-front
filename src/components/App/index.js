@@ -12,6 +12,7 @@ import Contact from './Contact';
 import About from './About';
 import Login from './Login';
 import Signup from './Signup';
+import Cgu from './Cgu';
 
 // == Composant
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/cgu" element={<Cgu />} />
       </Routes>
       <Footer />
     </div>
