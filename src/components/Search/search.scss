@@ -88,10 +88,13 @@
 
 @media screen and (max-width: 640px ) {
   .search {
-    width: 95%;
-
-    &-title {
-      width: 100%;
-    }
+    width: 90%;
+    margin: auto;
+  }
+  .form-wrapper {
+    width: 100%;
+  }
+  .form-platform {
+    width: 100%;
   }
 }
