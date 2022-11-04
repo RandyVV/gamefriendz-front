@@ -2,16 +2,25 @@
 // == Import
 import './home.scss';
 import Card from 'src/components/Card';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import windowspic from 'src/assets/images/platform/windows.png';
 import pspic from 'src/assets/images/platform/ps-logo.png';
 import xboxpic from 'src/assets/images/platform/xbox-logo.png';
 import switchpic from 'src/assets/images/platform/switch-logo.png';
 import androidpic from 'src/assets/images/platform/android-logo.png';
 import discordpic from 'src/assets/images/discord-logo.png';
+import { useEffect } from 'react';
+import { fetchGames } from '../../actions/games';
 
 // == Composant
 function Home() {
+  const dispatch = useDispatch();
+
+  /** useEffect qui fait la requete a l'api pour récuperer les jeux au montage du composant */
+  useEffect(() => {
+    dispatch(fetchGames());
+  }, []);
+
   const games = useSelector((state) => state.games.allGames);
   return (
     <div className="home">

@@ -10,7 +10,7 @@ const initialState = {
   allGames: datas,
   platform: '',
   player: '',
-  games: '',
+  searchedGame: '',
   isMenuOpen: false,
 };
 
