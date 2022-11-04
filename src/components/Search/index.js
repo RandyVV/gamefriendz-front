@@ -74,11 +74,13 @@ function Search() {
         {/* <div className="home-cards">
           {games.map((game) => <Card key={game.id} {...game} />)}
         </div> */}
-        <PlayerCard />
-        <PlayerCard />
-        <PlayerCard />
-        <PlayerCard />
-        <PlayerCard />
+        <div className="home-cards">
+          <PlayerCard />
+          <PlayerCard />
+          <PlayerCard />
+          <PlayerCard />
+          <PlayerCard />
+        </div>
       </div>
     );
   }
