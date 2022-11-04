@@ -1,6 +1,6 @@
 // == Import
 import './signup.scss';
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // == Composant
 
@@ -59,7 +59,8 @@ function Signup() {
               type="button"
               className="mt-10 py-2 px-3 text-base font-medium text-white bg-primary rounded-lg hover:bg-altprimary"
               onClick={navigateToLogin}
-            >Se Connecter
+            >
+              Se Connecter
             </button>
           </label>
         </div>
