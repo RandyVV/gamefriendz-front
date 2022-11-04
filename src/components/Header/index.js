@@ -1,5 +1,6 @@
 // == Import
 import './header.scss';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import logoDesktop from '../../assets/images/LogoManette.png';
 import { toggleLoginForm } from '../../actions/user';
@@ -17,15 +18,24 @@ function Header() {
     dispatch(toggleMenu());
   };
 
+  const navigate = useNavigate();
+
+  const navigateToSignup = () => {
+    navigate('/signup');
+  };
+
   return (
     <div className="header">
-      <button className="header-button" type="button" onClick={handleMenuClick}> Menu </button>
+      <button className="ml-2 py-2 px-3 text-base font-medium text-white bg-primary rounded-lg hover:bg-altprimary" type="button" onClick={handleMenuClick}> Menu </button>
       <div className="header-logo">
         <span className="header-title">Game</span>
         <img className="header-img" src={logoDesktop} alt="Logo du site" />
         <span className="header-title">FriendZ</span>
       </div>
-      <button className="header-button" type="button" onClick={handleLoginClick}> Login </button>
+      <div className="buttons mr-2">
+        <button className="mr-2 py-2 px-3 text-base font-medium text-white bg-primary rounded-lg hover:bg-altprimary" type="button" onClick={handleLoginClick}>Connexion</button>
+        <button className="py-2 px-3 text-base font-medium text-white bg-primary rounded-lg hover:bg-altprimary" type="button" onClick={navigateToSignup}>S'inscrire</button>
+      </div>
     </div>
   );
 }
