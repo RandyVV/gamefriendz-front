@@ -4,14 +4,14 @@ import {
   SAVE_GAMES,
   TOGGLE_MENU,
 } from '../actions/games';
-import datas from '../datas/gamesDatas';
 
 const initialState = {
-  allGames: datas,
+  allGames: '',
   platform: '',
   player: '',
   searchedGame: '',
   isMenuOpen: false,
+  loading: true,
 };
 
 function reducer(state = initialState, action = {}) {
@@ -24,6 +24,7 @@ function reducer(state = initialState, action = {}) {
     case SAVE_GAMES:
       return {
         ...state,
+        loading: false,
         allGames: action.games,
       };
     case CHANGE_VALUE:
