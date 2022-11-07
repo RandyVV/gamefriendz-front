@@ -2,7 +2,7 @@ import axios from 'axios';
 import { FETCH_GAMES, SEARCH_GAME, saveGames } from '../actions/games';
 
 const games = (store) => (next) => (action) => {
-  const URL = 'http://randyvv-server.eddi.cloud/projet-02-game-friendz-back/public/api/';
+  const URL = 'http://localhost:8000/api/';
   switch (action.type) {
     case FETCH_GAMES: {
       axios.get(`${URL}games`)
@@ -19,9 +19,10 @@ const games = (store) => (next) => (action) => {
       break;
     }
     case SEARCH_GAME: {
-      const { searchedGame, platform } = store.getState();
+      const { games: { searchedGame, platform } } = store.getState();
+      console.log(searchedGame, platform);
       axios.post(`${URL}games/search`, {
-        games: searchedGame,
+        title: searchedGame,
         platform: platform,
       })
         .then((response) => {
