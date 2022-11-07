@@ -7,9 +7,9 @@ import {
 
 const initialState = {
   allGames: '',
+  searchedGame: '',
   platform: '',
   player: '',
-  searchedGame: '',
   isMenuOpen: false,
   loading: true,
 };
