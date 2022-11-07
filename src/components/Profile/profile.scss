@@ -6,6 +6,7 @@
   flex-flow: column;
   align-items: center;
   width:70%;
+  color: vars.$light-color;
 
   &-wrapper {
     display: flex;
@@ -13,11 +14,13 @@
     justify-content: center;
     flex-direction: column;
     background-color: vars.$bg-dark-color;
+    width: 80% ;
     border-radius: 10px;
     box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
 
     &-bg {
       background-image: url(https://images.contentstack.io/v3/assets/blt187521ff0727be24/blt47c7e1e814519dc2/60ee0c8f8c0ef444a6835a14/demacia-grandplaza.jpg);
+      filter: grayscale(50%);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -29,6 +32,18 @@
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       border-bottom: 3px solid vars.$light-color;
+
+      &:hover {
+        filter: grayscale(0%);
+      }
+    }    
+
+    &-info{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-top: 5em;
     }
   }
 
@@ -38,6 +53,49 @@
     transform: translateY(50%);
   }
 
+  &-title {
+    color: vars.$light-color;
+    font-size: 2.2em;
+  }
+
+  &-infos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 1em auto 1em;
+  }
+
+  &-label {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: lightgray;
+    margin-bottom: 0.5em;
+    font-size: 0.8em;
+    text-transform: uppercase;
+  }
+
+  &-input {
+    background-color: vars.$bg-dark-color;
+    border-bottom: 1px solid vars.$light-color;
+    margin-bottom: 1em;
+    color: vars.$light-color;
+    font-size: 1.5em;
+  }
+
+  &-games {
+    width: 80%;
+    display: flex;
+    margin: vars.$gutter;
+  }
+
+  &-subwrapper {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   
 }
 
