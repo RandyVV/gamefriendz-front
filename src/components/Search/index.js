@@ -10,17 +10,26 @@ import {
   fetchGames,
   searchGame,
 } from '../../actions/games';
+import {
+  fetchPlayers,
+  searchPlayer,
+} from '../../actions/players';
 
 // == Composant
 function Search() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games.allGames);
+  const players = useSelector((state) => state.players.allPlayers);
+  console.log(useSelector((state) => state.players));
   const loading = useSelector((state) => state.games.loading);
+  const loadingPlayers = useSelector((state) => state.players.loadingPlayer);
   const route = window.location.pathname;
 
-  /** useEffect qui fait la requete a l'api pour récuperer les jeux au montage du composant */
+  /** useEffect qui fait la requete a l'api pour récuperer les
+   *  jeux et les joueurs au montage du composant */
   useEffect(() => {
     dispatch(fetchGames());
+    dispatch(fetchPlayers());
   }, []);
 
   const handleSubmit = (event) => {
@@ -28,7 +37,12 @@ function Search() {
     dispatch(searchGame());
   };
 
-  const handelChange = (event) => {
+  const handleSubmitPlayers = (event) => {
+    event.preventDefault();
+    dispatch(searchPlayer());
+  };
+
+  const handleChange = (event) => {
     dispatch(changeValue(event.target.name, event.target.value));
   };
 
@@ -42,7 +56,7 @@ function Search() {
         <div className="form-wrapper">
           <form className="form" onSubmit={handleSubmit}>
             <label htmlFor="floating_name" className="form-label">Jeux:
-              <input className="form-input" type="text" name="searchedGame" onChange={handelChange} />
+              <input className="form-input" type="text" name="searchedGame" onChange={handleChange} />
             </label>
             <label htmlFor="platform_select" className="form-selector">Plateforme:
               <select name="platform" className="form-platform" onChange={handleSelect}>
@@ -70,33 +84,21 @@ function Search() {
   }
   // eslint-disable-next-line no-else-return
   else if (route === '/players') {
-    // const handleSubmit = (event) => {
-    //   event.preventDefault();
-    //   console.log(event);
-    //   // dispatch();
-    // };
     return (
       <div className="search">
         <div className="form-wrapper">
-          <form className="form" onSubmit={handleSubmit}>
+          <form className="form" onSubmit={handleSubmitPlayers}>
             <label htmlFor="floating_name" className="form-label">Joueur:
-              <input className="form-input" type="text" name="player" onChange={handelChange} required />
+              <input className="form-input" type="text" name="searchedPlayer" onChange={handleChange} />
             </label>
             <button className="form-button" type="submit"> Rechercher </button>
           </form>
         </div>
-        {/* <div className="home-cards">
-          {games.map((game) => <Card key={game.id} {...game} />)}
-        </div> */}
+        {!loadingPlayers && (
         <div className="player-cards">
-          <PlayerCard />
-          <PlayerCard />
-          <PlayerCard />
-          <PlayerCard />
-          <PlayerCard />
-          <PlayerCard />
-          <PlayerCard />
+          {players.map((player) => <PlayerCard key={player.id} {...player} />)}
         </div>
+        )}
       </div>
     );
   }
@@ -104,5 +106,3 @@ function Search() {
 
 // == Export
 export default Search;
-
-// http://randy-venant-valery.vpnuser.lan:8080/api/games/149
