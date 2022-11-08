@@ -1,14 +1,22 @@
 import axios from 'axios';
-import { FETCH_GAMES, SEARCH_GAME, saveGames } from '../actions/games';
+import { FETCH_PLAYERS, SEARCH_PLAYER, savePlayers } from '../actions/players';
 
-const games = (store) => (next) => (action) => {
+// function getRandomInt(min, max) {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   return Math.floor(Math.random() * (max - min)) + min;
+// }
+
+// const randomPlayer = getRandomInt(21, 42);
+
+const players = (store) => (next) => (action) => {
   const URL = 'http://randyvv-server.eddi.cloud/projet-02-game-friendz-back/public/api/';
   switch (action.type) {
-    case FETCH_GAMES: {
-      axios.get(`${URL}games`)
+    case FETCH_PLAYERS: {
+      axios.get(`${URL}players`)
         .then((response) => {
           // Callback executée lorsque la promesse est tenue
-          store.dispatch(saveGames(response.data));
+          store.dispatch(savePlayers(response.data));
           console.log(response.data);
         })
         .catch((error) => {
@@ -19,17 +27,16 @@ const games = (store) => (next) => (action) => {
       next(action);
       break;
     }
-    case SEARCH_GAME: {
-      const { games: { searchedGame, platform } } = store.getState();
-      console.log(searchedGame, platform);
-      axios.post(`${URL}games/search`, {
-        title: searchedGame,
-        platform: platform,
+    case SEARCH_PLAYER: {
+      const { players: { searchedPlayer } } = store.getState();
+      console.log(searchedPlayer);
+      axios.post(`${URL}players/search`, {
+        nickname: searchedPlayer,
       })
         .then((response) => {
           console.log(response.data);
           // Callback executée lorsque la promesse est tenue
-          store.dispatch(saveGames(response.data));
+          store.dispatch(savePlayers(response.data));
         })
         .catch((error) => {
           // Callback executée lorsque la promesse est rompus
@@ -45,4 +52,4 @@ const games = (store) => (next) => (action) => {
   }
 };
 
-export default games;
+export default players;
