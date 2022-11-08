@@ -2,7 +2,7 @@ import axios from 'axios';
 import { FETCH_GAMES, SEARCH_GAME, saveGames } from '../actions/games';
 
 const games = (store) => (next) => (action) => {
-  const URL = 'http://localhost:8000/api/';
+  const URL = 'http://randyvv-server.eddi.cloud/projet-02-game-friendz-back/public/api/';
   switch (action.type) {
     case FETCH_GAMES: {
       axios.get(`${URL}games`)
