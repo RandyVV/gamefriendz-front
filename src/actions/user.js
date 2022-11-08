@@ -28,3 +28,17 @@ export const LOGOUT = 'LOGOUT';
 export const logout = () => ({
   type: LOGOUT,
 });
+
+// partie inscription
+
+export const CHANGE_SIGNUP_FIELD_VALUE = 'CHANGE_SIGNUP_FIELD_VALUE';
+export const changeSignFieldValue = (field, value) => ({
+  type: CHANGE_SIGNUP_FIELD_VALUE,
+  field,
+  value,
+});
+
+export const SIGNUP = 'SIGNUP';
+export const signup = () => ({
+  type: SIGNUP,
+});

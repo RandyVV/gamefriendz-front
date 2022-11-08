@@ -1,5 +1,10 @@
 // == Import
-import { Routes, Route, useLocation } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from 'react-router-dom';
 import { useEffect } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
@@ -30,6 +35,7 @@ function App() {
       <Menu />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/logout" element={<Navigate to="/" />} />
         <Route path="/games" element={<Search />} />
         <Route path="/players" element={<Search />} />
         <Route path="/contact" element={<Contact />} />

@@ -3,6 +3,7 @@ import {
   LOGOUT,
   CONNECT_USER,
   CHANGE_FIELD_VALUE,
+  CHANGE_SIGNUP_FIELD_VALUE,
 } from '../actions/user';
 
 const initialState = {
@@ -13,6 +14,15 @@ const initialState = {
   token: '',
   isLogged: true,
   isOpen: false,
+  signup: [
+    {
+      email: '',
+      pseudo: '',
+      discord: '',
+      password: '',
+      confirmPassword: '',
+    },
+  ],
 };
 
 function reducer(state = initialState, action = {}) {
@@ -44,6 +54,14 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         [action.field]: action.value,
+      };
+    case CHANGE_SIGNUP_FIELD_VALUE:
+      return {
+        ...state,
+        signup: {
+          ...state.signup,
+          [action.field]: action.value,
+        },
       };
     default:
       return state;
