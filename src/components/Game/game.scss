@@ -6,3 +6,31 @@
   display: flex;
   justify-content: center;
 }
+
+.releases {
+  display: flex;
+  flex-wrap: wrap;
+
+  &-platform {
+    margin-right: 5em;
+  }
+
+  &-dates {
+    margin-right: 5em;
+  }
+}
+
+@media screen and (max-width: 640px ) {
+  .releases {
+    display: flex;
+    flex-wrap: wrap;
+  
+    &-platform {
+      margin-right: 2em;
+    }
+  
+    &-dates {
+      margin-right: 2em;
+    }
+  }
+}

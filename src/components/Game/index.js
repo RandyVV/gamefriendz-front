@@ -44,15 +44,25 @@ function Game() {
           <a href="#">
             <h5 className="mb-2 text-2xl text-white font-bold tracking-tight flex justify-center">{game.title}</h5>
           </a>
-          <p className="mb-3 font-normal text-white">{game.description}</p>
-          <p className="mb-3 font-normal text-white">Disponible sur :</p>
-          <ul>
-            <li><img className="w-7 h-7" src={windowspic} alt="" /></li>
-          </ul>
-          <p className="mb-3 font-normal text-white">Date de sortie :</p>
-          <p className="mb-3 font-normal text-white">X</p>
-          <p className="mb-3 font-normal text-white">Multijoueurs :</p>
-          <p className="mb-3 font-normal text-white">{game.has_multiplayer_mode}</p>
+          <p className="mb-3 font-normal text-lg text-white">{game.description}</p>
+          <div className="releases">
+            <div className="releases-platform">
+              <p className="mb-3 font-normal text-xl text-white">Disponible sur :</p>
+              <ul className="text-primary">
+                {game.releases.map((release) => <li><p className="mb-3 font-normal text-lg text-lightblue" key={release.platform.id}>{release.platform.name}</p></li>)}
+              </ul>
+            </div>
+            <div className="releases-dates">
+              <p className="mb-3 font-normal text-xl text-white">Date de sortie :</p>
+              <ul className="text-primary">
+                {game.releases.map((release) => <li><p className="mb-3 font-normal text-lg text-lightblue" key={release.id}>{release.release_date.substring(0, 10)}</p></li>)}
+              </ul>
+            </div>
+            <div className="releases-multi">
+              <p className="mb-3 font-normal text-xl text-white">Multijoueurs :</p>
+              <p className="mb-3 font-normal text-lg text-lightblue">{game.has_multiplayer_mode ? 'Oui' : 'Non'}</p>
+            </div>
+          </div>
           <div className="flex flex-row-reverse">
             <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" type="button">
               <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
