@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { toggleMenu } from '../../../actions/games';
+import { logout } from '../../../actions/user';
 
 import './menu.scss';
 
@@ -45,6 +46,7 @@ function Menu() {
           Recherche de Jeux
         </NavLink>
 
+        {isLogged && (
         <NavLink
           onClick={handleMenuClick}
           className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
@@ -53,6 +55,9 @@ function Menu() {
         >
           Recherche de Joueur
         </NavLink>
+        )}
+
+        {!isLogged && (
         <NavLink
           onClick={handleMenuClick}
           className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
@@ -61,6 +66,21 @@ function Menu() {
         >
           Se connecter
         </NavLink>
+        )}
+
+        {isLogged && (
+        <NavLink
+          onClick={(event) => {
+            handleMenuClick(event); dispatch(logout());
+          }}
+          className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
+          end
+          to="/logout"
+        >
+          Déconnexion
+        </NavLink>
+        )}
+
         <NavLink
           onClick={handleMenuClick}
           className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}

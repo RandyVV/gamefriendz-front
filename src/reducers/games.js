@@ -9,7 +9,6 @@ const initialState = {
   allGames: '',
   searchedGame: '',
   platform: '',
-  player: '',
   isMenuOpen: false,
   loading: true,
 };

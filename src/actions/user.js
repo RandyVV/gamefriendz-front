@@ -16,15 +16,28 @@ export const login = () => ({
 });
 
 export const CONNECT_USER = 'CONNECT_USER';
-export const connectUser = (pseudo, id, logged, token) => ({
+export const connectUser = (token, pseudo, id) => ({
   type: CONNECT_USER,
+  token,
   pseudo,
   id,
-  logged,
-  token,
 });
 
 export const LOGOUT = 'LOGOUT';
 export const logout = () => ({
   type: LOGOUT,
+});
+
+// partie inscription
+
+export const CHANGE_SIGNUP_FIELD_VALUE = 'CHANGE_SIGNUP_FIELD_VALUE';
+export const changeSignFieldValue = (field, value) => ({
+  type: CHANGE_SIGNUP_FIELD_VALUE,
+  field,
+  value,
+});
+
+export const SIGNUP = 'SIGNUP';
+export const signup = () => ({
+  type: SIGNUP,
 });
