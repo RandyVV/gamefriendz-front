@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 // == Import
 import './profile.scss';
 import avatar from 'src/assets/images/vava.png';
@@ -5,8 +7,7 @@ import { useSelector } from 'react-redux';
 
 // == Composant
 function Profile() {
-  const currentUser = useSelector((state) => state.user.currentUser[0]);
-  console.log(currentUser);
+  const currentUser = useSelector((state) => state.user.currentUser);
   return (
     <div className="profile">
       <div className="profile-wrapper">
