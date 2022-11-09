@@ -50,6 +50,16 @@ function Search() {
     dispatch(changeSelectValue(event.target.value));
   };
 
+  // eslint-disable-next-line consistent-return
+  function filteredPlayers(status, loadedPlayers) {
+    if (status === false) {
+      const results = loadedPlayers.filter((loadedPlayer) => loadedPlayer.id <= 27);
+      return results;
+    }
+  }
+
+  const results = filteredPlayers(loadingPlayers, players);
+
   if (route === '/games') {
     return (
       <div className="search">
@@ -96,7 +106,7 @@ function Search() {
         </div>
         {!loadingPlayers && (
         <div className="player-cards">
-          {players.map((player) => <PlayerCard key={player.id} {...player} />)}
+          {results.map((result) => <PlayerCard key={result.id} {...result} />)}
         </div>
         )}
       </div>
