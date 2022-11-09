@@ -1,4 +1,6 @@
+/* eslint-disable camelcase */
 // == Import
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './playercard.scss';
 import avatar from 'src/assets/images/vava.png';
