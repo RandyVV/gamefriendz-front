@@ -20,6 +20,7 @@ function Search() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games.allGames);
   const players = useSelector((state) => state.players.allPlayers);
+  console.log(players);
   const loading = useSelector((state) => state.games.loading);
   const loadingPlayers = useSelector((state) => state.players.loadingPlayer);
   const route = window.location.pathname;
