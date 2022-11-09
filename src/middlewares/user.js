@@ -9,12 +9,12 @@ const user = (store) => (next) => (action) => {
       console.log(email, password);
 
       axios.post(`${URL}login`, {
-        email: email,
+        username: email,
         password: password,
       })
         .then((response) => {
-          console.log(response.data.pseudo);
-          store.dispatch(connectUser(response.data.pseudo));
+          console.log(response.data.token);
+          store.dispatch(connectUser(response.data));
         })
         .catch((error) => {
           console.log(error);
@@ -45,7 +45,6 @@ const user = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response.data.pseudo);
-          // store.dispatch(connectUser(response.data.pseudo));
         })
         .catch((error) => {
           console.log(error);

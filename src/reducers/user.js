@@ -12,7 +12,7 @@ const initialState = {
   pseudo: '',
   id: '',
   token: '',
-  isLogged: true,
+  isLogged: false,
   isOpen: false,
   signup: [
     {
@@ -47,8 +47,8 @@ function reducer(state = initialState, action = {}) {
         password: '',
         pseudo: action.pseudo,
         id: action.id,
-        token: action.token,
-        isLogged: action.logged,
+        token: action.token.token,
+        isLogged: true,
       };
     case CHANGE_FIELD_VALUE:
       return {

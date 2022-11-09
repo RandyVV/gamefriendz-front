@@ -16,12 +16,11 @@ export const login = () => ({
 });
 
 export const CONNECT_USER = 'CONNECT_USER';
-export const connectUser = (pseudo, id, logged, token) => ({
+export const connectUser = (token, pseudo, id) => ({
   type: CONNECT_USER,
+  token,
   pseudo,
   id,
-  logged,
-  token,
 });
 
 export const LOGOUT = 'LOGOUT';
