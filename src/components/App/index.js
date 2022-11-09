@@ -15,6 +15,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Cgu from './Cgu';
 import Profile from '../Profile';
+import ErrorPage from '../ErrorPage';
 
 // == Composant
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/cgu" element={<Cgu />} />
         <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/404" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </div>
