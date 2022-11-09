@@ -14,7 +14,7 @@ function PlayerCard({
 }) {
   const navigate = useNavigate();
   const navigateToProfile = () => {
-    navigate('/profile/:id');
+    navigate('/profile/', { id });
   };
   return (
     <div className="playercard">
@@ -22,7 +22,7 @@ function PlayerCard({
         <img className="playercard-img" src={avatar} alt="" />
         <h4 className="playercard-title">{nickname}</h4>
         <h5 className="playercard-subtitle">Try Harder</h5>
-        <p className="playercard-text">{discordTag}</p>
+        <p className="playercard-text">{discord_tag}</p>
         <button className="playercard-btn" type="button" onClick={navigateToProfile}>Voir plus</button>
       </div>
     </div>
