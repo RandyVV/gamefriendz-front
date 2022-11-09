@@ -20,7 +20,6 @@ function Search() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games.allGames);
   const players = useSelector((state) => state.players.allPlayers);
-  console.log(useSelector((state) => state.players));
   const loading = useSelector((state) => state.games.loading);
   const loadingPlayers = useSelector((state) => state.players.loadingPlayer);
   const route = window.location.pathname;
@@ -49,6 +48,16 @@ function Search() {
   const handleSelect = (event) => {
     dispatch(changeSelectValue(event.target.value));
   };
+
+  // eslint-disable-next-line consistent-return
+  // function filteredPlayers(status, loadedPlayers) {
+  //  if (status === false) {
+  //    const results = loadedPlayers.filter((loadedPlayer) => loadedPlayer.id <= 27);
+  //    return results;
+  //  }
+  // }
+
+  // const results = filteredPlayers(loadingPlayers, players);
 
   if (route === '/games') {
     return (
