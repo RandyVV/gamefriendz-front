@@ -1,35 +1,35 @@
 // == Import
 import './profile.scss';
 import avatar from 'src/assets/images/vava.png';
+import { useSelector } from 'react-redux';
 
 // == Composant
 function Profile() {
+  const currentUser = useSelector((state) => state.user.currentUser[0]);
+  console.log(currentUser);
   return (
     <div className="profile">
       <div className="profile-wrapper">
         <div className="profile-wrapper-bg"><img className="profile-img" src={avatar} alt="" /></div>
         <div className="profile-wrapper-info">
-          <h1 className="profile-title">Player Name</h1>
+          <h1 className="profile-title">{currentUser.nickname}</h1>
           <form className="profile-infos">
             <label htmlFor="floating_name" className="profile-label">Pseudo
-              <input className="profile-input" type="text" name="player" />
+              <input className="profile-input" type="text" placeholder={currentUser.nickname} name="player" />
             </label>
             <label htmlFor="floating_name" className="profile-label">Mot de passe
-              <input className="profile-input" type="password" name="player" />
+              <input className="profile-input" type="password" placeholder="Mot de passe" name="player" />
             </label>
             <label htmlFor="floating_name" className="profile-label">Discord Tag
-              <input className="profile-input" type="text" name="player" required />
+              <input className="profile-input" type="text" placeholder={currentUser.discord_tag} name="player" required />
             </label>
           </form>
           <div className="profile-games">
-            <div className="profile-subwrapper">
-              <h2 className="profile-subtitle">Mes jeux</h2>
-              <p className="playercard-text">Lorem ipsum dolor sit amet, elit consectetur adipiscing. Fusce eget tempor augue. Fusce eget tempor augue. Fusce eget tempor augue.</p>
-            </div>
-            <div className="profile-subwrapper">
-              <h2 className="profile-subtitle">Je veux jouer</h2>
-              <p className="playercard-text">Lorem ipsum dolor sit amet, elit consectetur adipiscing. Fusce eget tempor augue.</p>
-            </div>
+            <h2 className="profile-subtitle">Mes jeux</h2>
+            <h3 className="profile-lasttitle">Disponible ?</h3>
+            <ul className="profile-list">
+              {currentUser.owned_games.map((owned_game) => <li className="profile-item">{owned_game.game.title} - {owned_game.platform.name}<button className="profile-item-button" type="button">Supprimer</button><label className="profile-item-check"><input className="profile-item-checkbox" type="checkbox" /></label></li>)}
+            </ul>
           </div>
         </div>
       </div>
