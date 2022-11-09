@@ -46,7 +46,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/cgu" element={<Cgu />} />
         <Route path="/profile/:id" element={<Profile />} />
-        <Route path="/*" element={<ErrorPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </div>
