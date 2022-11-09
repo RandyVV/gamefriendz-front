@@ -1,4 +1,5 @@
 // == Import
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './playercard.scss';
 import avatar from 'src/assets/images/vava.png';
@@ -10,6 +11,10 @@ function PlayerCard({
   // picture,
   discord_tag,
 }) {
+  const navigate = useNavigate();
+  const navigateToProfile = () => {
+    navigate('/profile');
+  };
   return (
     <div className="playercard">
       <div className="playercard-wrapper">
@@ -17,7 +22,7 @@ function PlayerCard({
         <h4 className="playercard-title">{nickname}</h4>
         <h5 className="playercard-subtitle">Try Harder</h5>
         <p className="playercard-text">{discord_tag}</p>
-        <button className="playercard-btn" type="button">Ajouter</button>
+        <button className="playercard-btn" type="button" onClick={navigateToProfile}>Voir plus</button>
       </div>
     </div>
   );
