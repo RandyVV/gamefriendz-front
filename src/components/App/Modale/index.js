@@ -1,11 +1,13 @@
 // == Import// == Import
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { changeFieldValue, login, toggleLoginForm } from '../../../actions/user';
 import './modale.scss';
 
 // == Composant
 function Modale() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { isOpen, email, password } = useSelector((state) => state.user);
 
@@ -20,6 +22,7 @@ function Modale() {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(login());
+    navigate('/');
   };
 
   return (

@@ -13,7 +13,7 @@ function PlayerCard({
 }) {
   const navigate = useNavigate();
   const navigateToProfile = () => {
-    navigate('/profile');
+    navigate('/profile/', { id });
   };
   return (
     <div className="playercard">
