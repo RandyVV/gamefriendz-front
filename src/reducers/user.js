@@ -5,12 +5,12 @@ import {
   CHANGE_FIELD_VALUE,
   CHANGE_SIGNUP_FIELD_VALUE,
 } from '../actions/user';
+import userDatas from '../datas/userDatas';
 
 const initialState = {
   email: '',
   password: '',
-  pseudo: '',
-  id: '',
+  currentUser: userDatas,
   token: '',
   isLogged: false,
   isOpen: false,
