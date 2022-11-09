@@ -13,7 +13,7 @@ const user = (store) => (next) => (action) => {
         password: password,
       })
         .then((response) => {
-          console.log(response.data.token);
+          console.log(response.data);
           store.dispatch(connectUser(response.data));
         })
         .catch((error) => {

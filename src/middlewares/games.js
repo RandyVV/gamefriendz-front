@@ -7,12 +7,9 @@ const games = (store) => (next) => (action) => {
     case FETCH_GAMES: {
       axios.get(`${URL}games`)
         .then((response) => {
-          // Callback executée lorsque la promesse est tenue
           store.dispatch(saveGames(response.data));
-          console.log(response.data);
         })
         .catch((error) => {
-          // Callback executée lorsque la promesse est rompus
           console.log(error);
         });
 
@@ -27,12 +24,9 @@ const games = (store) => (next) => (action) => {
         platform: platform,
       })
         .then((response) => {
-          console.log(response.data);
-          // Callback executée lorsque la promesse est tenue
           store.dispatch(saveGames(response.data));
         })
         .catch((error) => {
-          // Callback executée lorsque la promesse est rompus
           console.log(error);
         });
 
