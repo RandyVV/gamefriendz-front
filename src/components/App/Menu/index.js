@@ -1,15 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { toggleMenu } from '../../../actions/games';
-import { logout } from '../../../actions/user';
+import { logout, foundUserDatas } from '../../../actions/user';
 
 import './menu.scss';
 
 function Menu() {
   const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.user.isLogged);
+  const loading = useSelector((state) => state.user.loading);
   const isMenuOpen = useSelector((state) => state.games.isMenuOpen);
-  const profileId = useSelector((state) => state.user.id);
+  const profileId = useSelector((state) => state.user.currentUser.id);
+  console.log(profileId);
 
   const handleMenuClick = () => {
     dispatch(toggleMenu());
@@ -27,9 +29,11 @@ function Menu() {
           Accueil
         </NavLink>
 
-        {isLogged && (
+        {isLogged && !loading && (
           <NavLink
-            onClick={handleMenuClick}
+            onClick={(event) => {
+              handleMenuClick(event); dispatch(foundUserDatas());
+            }}
             className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
             to={`/profile/${profileId}`}
           >

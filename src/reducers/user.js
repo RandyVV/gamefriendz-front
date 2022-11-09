@@ -4,6 +4,7 @@ import {
   CONNECT_USER,
   CHANGE_FIELD_VALUE,
   CHANGE_SIGNUP_FIELD_VALUE,
+  LOAD_DATAS,
 } from '../actions/user';
 import userDatas from '../datas/userDatas';
 
@@ -12,6 +13,7 @@ const initialState = {
   password: '',
   currentUser: userDatas,
   token: '',
+  loading: true,
   isLogged: false,
   isOpen: false,
   signup: [
@@ -45,9 +47,8 @@ function reducer(state = initialState, action = {}) {
         ...state,
         email: '',
         password: '',
-        pseudo: action.pseudo,
-        id: action.id,
-        token: action.token.token,
+        token: action.token,
+        currentUser: action.currentUser,
         isLogged: true,
       };
     case CHANGE_FIELD_VALUE:
@@ -62,6 +63,12 @@ function reducer(state = initialState, action = {}) {
           ...state.signup,
           [action.field]: action.value,
         },
+      };
+    case LOAD_DATAS:
+      return {
+        ...state,
+        currentUser: action.userDatas,
+        loading: false,
       };
     default:
       return state;
