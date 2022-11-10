@@ -20,7 +20,6 @@ function Search() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games.allGames);
   const players = useSelector((state) => state.players.allPlayers);
-  console.log(players);
   const loading = useSelector((state) => state.games.loading);
   const loadingPlayers = useSelector((state) => state.players.loadingPlayer);
   const route = window.location.pathname;
@@ -47,7 +46,7 @@ function Search() {
   };
 
   const handleSelect = (event) => {
-    dispatch(changeSelectValue(event.target.value));
+    dispatch(changeSelectValue(event.target.name, event.target.value));
   };
 
   // eslint-disable-next-line consistent-return
