@@ -4,22 +4,15 @@
 import './profile.scss';
 import avatar from 'src/assets/images/vava.png';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 
 // == Composant
 function Profile() {
   const currentUser = useSelector((state) => state.user.currentUser);
-  // const players = useSelector((state) => state.players.allPlayers);
-  const { id } = useParams();
-  const intId = parseInt(id, 10);
   const route = window.location.pathname;
+  const loading = useSelector((state) => state.players.loading);
 
-  function findPlayer(players, searchedId) {
-    const player = players.find((testedPlayer) => testedPlayer.id === searchedId);
-    return player;
-  }
-
-  const player = useSelector((state) => findPlayer(state.players.allPlayers, intId));
+  const player = useSelector((state) => state.players.searchedPlayerData);
+  console.log(player);
 
   if (route === '/profile') {
     return (
@@ -42,9 +35,11 @@ function Profile() {
             <div className="profile-games">
               <h2 className="profile-subtitle">Mes jeux</h2>
               <h3 className="profile-lasttitle">Disponible ?</h3>
+              {!loading && (
               <ul className="profile-list">
                 {currentUser.owned_games.map((owned_game) => <li className="profile-item">{owned_game.game.title} - {owned_game.platform.name}<button className="profile-item-button" type="button">Supprimer</button><label className="profile-item-check"><input className="profile-item-checkbox" type="checkbox" /></label></li>)}
               </ul>
+              )}
             </div>
           </div>
         </div>
