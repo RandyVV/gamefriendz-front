@@ -3,6 +3,7 @@
 
 import PropTypes from 'prop-types';
 import './playercard.scss';
+import { useNavigate } from 'react-router-dom';
 import avatar from 'src/assets/images/vava.png';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -16,10 +17,14 @@ function PlayerCard({
   discord_tag,
 }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleClick = () => {
     console.log('ca click');
     dispatch(fetchPlayerData());
+    setTimeout(() => {
+      navigate(`/player/${id}`);
+    }, 500);
   };
 
   return (
@@ -36,9 +41,7 @@ function PlayerCard({
             dispatch(loadSearchedId(id)); handleClick(event);
           }}
         >
-          <Link to={`/player/${id}`}>
-            Voir Plus
-          </Link>
+          Voir Plus
         </button>
       </div>
     </div>
