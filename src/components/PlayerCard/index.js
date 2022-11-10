@@ -20,7 +20,7 @@ function PlayerCard({
         <h4 className="playercard-title">{nickname}</h4>
         <h5 className="playercard-subtitle">Try Harder</h5>
         <p className="playercard-text">{discord_tag}</p>
-        <button className="playercard-btn" type="button"> <Link to={`/profile/${id}`}>Voir Plus</Link></button>
+        <button className="playercard-btn" type="button"> <Link to={`/player/${id}`}>Voir Plus</Link></button>
       </div>
     </div>
   );

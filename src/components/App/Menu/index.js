@@ -10,8 +10,6 @@ function Menu() {
   const isLogged = useSelector((state) => state.user.isLogged);
   const loading = useSelector((state) => state.user.loading);
   const isMenuOpen = useSelector((state) => state.games.isMenuOpen);
-  const profileId = useSelector((state) => state.user.currentUser.id);
-  console.log(profileId);
 
   const handleMenuClick = () => {
     dispatch(toggleMenu());
@@ -35,7 +33,7 @@ function Menu() {
               handleMenuClick(event); dispatch(foundUserDatas());
             }}
             className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
-            to={`/profile/${profileId}`}
+            to="/profile"
           >
             Profil
           </NavLink>

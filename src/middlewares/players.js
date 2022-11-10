@@ -30,6 +30,7 @@ const players = (store) => (next) => (action) => {
         nickname: searchedPlayer,
       })
         .then((response) => {
+          console.log(response.data);
           store.dispatch(savePlayers(response.data));
         })
         .catch((error) => {
