@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 import {
   FETCH_PLAYERS,
   SEARCH_PLAYER,
@@ -37,7 +36,6 @@ const players = (store) => (next) => (action) => {
         nickname: searchedPlayer,
       })
         .then((response) => {
-          console.log(response.data);
           store.dispatch(savePlayers(response.data));
         })
         .catch((error) => {
@@ -49,7 +47,6 @@ const players = (store) => (next) => (action) => {
     }
     case FETCH_PLAYER_DATA: {
       const { players: { searchedPlayerId } } = store.getState();
-      console.log(`le resultat est : ${searchedPlayerId}`);
       axios.get(`${URL}players/${searchedPlayerId}`)
         .then((response) => {
           console.log(response.data);
