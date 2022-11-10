@@ -45,7 +45,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/cgu" element={<Cgu />} />
-        <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/player/:id" element={<Profile />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />

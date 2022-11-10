@@ -26,3 +26,20 @@ export const SEARCH_PLAYER = 'SEARCH_PLAYER';
 export const searchPlayer = () => ({
   type: SEARCH_PLAYER,
 });
+
+export const LOAD_SEARCHED_ID = 'LOAD_SEARCHED_ID';
+export const loadSearchedId = (searchedId) => ({
+  type: LOAD_SEARCHED_ID,
+  searchedId: searchedId,
+});
+
+export const FETCH_PLAYER_DATA = 'FETCH_PLAYER_DATA';
+export const fetchPlayerData = () => ({
+  type: FETCH_PLAYER_DATA,
+});
+
+export const SAVE_PLAYER_DATA = 'SAVE_PLAYER_DATA';
+export const savePlayerData = (playerData) => ({
+  type: SAVE_PLAYER_DATA,
+  playerData: playerData,
+});

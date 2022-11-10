@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // == Import
 import './signup.scss';
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeSignFieldValue, signup } from '../../../actions/user';
 
@@ -13,7 +13,6 @@ function Signup() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { password, confirmPassword } = useSelector((state) => state.user.signup);
-  console.log(useSelector((state) => state.user.signup));
 
   const navigateToLogin = () => {
     navigate('/login');
@@ -33,6 +32,7 @@ function Signup() {
     else {
       console.log('Submit passe');
       dispatch(signup());
+      redirect('/');
     }
   };
 

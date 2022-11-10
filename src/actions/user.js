@@ -16,11 +16,21 @@ export const login = () => ({
 });
 
 export const CONNECT_USER = 'CONNECT_USER';
-export const connectUser = (token, pseudo, id) => ({
+export const connectUser = (token, currentUser) => ({
   type: CONNECT_USER,
   token,
-  pseudo,
-  id,
+  currentUser,
+});
+
+export const FOUND_USER_DATAS = 'FOUND_USER_DATAS';
+export const foundUserDatas = () => ({
+  type: FOUND_USER_DATAS,
+});
+
+export const LOAD_DATAS = 'LOAD_DATAS';
+export const loadDatas = (userDatas) => ({
+  type: LOAD_DATAS,
+  userDatas,
 });
 
 export const LOGOUT = 'LOGOUT';

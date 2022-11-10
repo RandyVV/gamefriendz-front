@@ -1,5 +1,12 @@
 import axios from 'axios';
-import { FETCH_PLAYERS, SEARCH_PLAYER, savePlayers } from '../actions/players';
+import { useParams } from 'react-router-dom';
+import {
+  FETCH_PLAYERS,
+  SEARCH_PLAYER,
+  savePlayers,
+  savePlayerData,
+  FETCH_PLAYER_DATA,
+} from '../actions/players';
 
 // function getRandomInt(min, max) {
 //   min = Math.ceil(min);
@@ -15,12 +22,9 @@ const players = (store) => (next) => (action) => {
     case FETCH_PLAYERS: {
       axios.get(`${URL}players`)
         .then((response) => {
-          // Callback executée lorsque la promesse est tenue
           store.dispatch(savePlayers(response.data));
-          console.log(response.data);
         })
         .catch((error) => {
-          // Callback executée lorsque la promesse est rompus
           console.log(error);
         });
 
@@ -29,17 +33,29 @@ const players = (store) => (next) => (action) => {
     }
     case SEARCH_PLAYER: {
       const { players: { searchedPlayer } } = store.getState();
-      console.log(searchedPlayer);
       axios.post(`${URL}players/search`, {
         nickname: searchedPlayer,
       })
         .then((response) => {
           console.log(response.data);
-          // Callback executée lorsque la promesse est tenue
           store.dispatch(savePlayers(response.data));
         })
         .catch((error) => {
-          // Callback executée lorsque la promesse est rompus
+          console.log(error);
+        });
+
+      next(action);
+      break;
+    }
+    case FETCH_PLAYER_DATA: {
+      const { players: { searchedPlayerId } } = store.getState();
+      console.log(`le resultat est : ${searchedPlayerId}`);
+      axios.get(`${URL}players/${searchedPlayerId}`)
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(savePlayerData(response.data));
+        })
+        .catch((error) => {
           console.log(error);
         });
 
