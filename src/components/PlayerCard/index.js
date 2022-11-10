@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './playercard.scss';
 import avatar from 'src/assets/images/vava.png';
-import { Link } from 'react-router-dom';
 
 // == Composant
 function PlayerCard({
