@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { FETCH_GAMES, SEARCH_GAME, saveGames } from '../actions/games';
+import {
+  FETCH_GAMES,
+  SEARCH_GAME,
+  saveGames,
+  ADD_GAME,
+} from '../actions/games';
 
 const games = (store) => (next) => (action) => {
   const URL = 'http://randyvv-server.eddi.cloud/projet-02-game-friendz-back/public/api/';
@@ -25,6 +30,22 @@ const games = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveGames(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      next(action);
+      break;
+    }
+    case ADD_GAME: {
+      const { games: { gameIdToAdd } } = store.getState();
+      const { user: { currentUser: { id } } } = store.getState();
+      axios.post(`${URL}players/${id}/addownedgames`, {
+        id: gameIdToAdd,
+      })
+        .then((response) => {
+          console.log(response.data);
         })
         .catch((error) => {
           console.log(error);
