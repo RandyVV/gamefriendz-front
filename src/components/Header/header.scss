@@ -44,6 +44,14 @@
   }
 }
 
+.logged {
+  display: none;
+}
+
+.unlogged {
+  margin-right: 1em;
+}
+
 @media screen and (max-width: 640px ) {
   .header {
     
