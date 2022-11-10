@@ -4,6 +4,7 @@
 import PropTypes from 'prop-types';
 import './playercard.scss';
 import avatar from 'src/assets/images/vava.png';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchPlayerData, loadSearchedId } from '../../actions/players';
 
