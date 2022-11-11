@@ -19,7 +19,7 @@
     box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
 
     &-bg {
-      background-image: url(https://images.contentstack.io/v3/assets/blt187521ff0727be24/blt47c7e1e814519dc2/60ee0c8f8c0ef444a6835a14/demacia-grandplaza.jpg);
+      background-image: url(https://wallpapercave.com/wp/wp6856179.jpg);
       filter: grayscale(50%);
       background-position: center;
       background-repeat: no-repeat;
@@ -36,7 +36,11 @@
       &:hover {
         filter: grayscale(0%);
       }
-    }    
+    }
+
+    &-img {
+      max-width:150px;
+    }
 
     &-info{
       display: flex;

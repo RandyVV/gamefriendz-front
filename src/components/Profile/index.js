@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // == Import
 import './profile.scss';
-import avatar from 'src/assets/images/vava.png';
+import avatar from 'src/assets/images/avatars/avatar.png';
 import { useSelector } from 'react-redux';
 
 // == Composant
