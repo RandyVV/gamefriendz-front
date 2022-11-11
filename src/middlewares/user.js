@@ -9,7 +9,7 @@ import {
 } from '../actions/user';
 
 const user = (store) => (next) => (action) => {
-  const URL = 'http://randyvv-server.eddi.cloud/projet-02-game-friendz-back/public/api/';
+  const URL = 'http://randyvv-server.eddi.cloud/api/';
   switch (action.type) {
     case LOGIN: {
       const { user: { email, password } } = store.getState();
