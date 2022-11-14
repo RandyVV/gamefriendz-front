@@ -5,6 +5,7 @@ import './profile.scss';
 import avatar from 'src/assets/images/avatars/avatar.png';
 import { useSelector, useDispatch } from 'react-redux';
 import {
+  catchGameId,
   removeGame,
 } from '../../actions/games';
 
@@ -19,6 +20,11 @@ function Profile() {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(removeGame());
+  };
+
+  const catchId = (event) => {
+    console.log(event.target.value);
+    dispatch(catchGameId(event.target.value));
   };
 
   if (route === '/profile') {
@@ -43,7 +49,7 @@ function Profile() {
               <h2 className="profile-subtitle">Mes jeux</h2>
               {!loading && (
               <ul className="profile-list">
-                {currentUser.owned_games.map((owned_game) => <li className="profile-item">{owned_game.game.title} - {owned_game.platform.name}<form className="form" onSubmit={handleSubmit}><button className="profile-item-button" type="submit">Supprimer</button></form></li>)}
+                {currentUser.owned_games.map((owned_game) => <li className="profile-item" key={owned_game.id}>{owned_game.game.title} - {owned_game.platform.name}<form className="form" onSubmit={handleSubmit}><button className="profile-item-button" value={owned_game.id} onClick={catchId} type="submit">Supprimer</button></form></li>)}
               </ul>
               )}
             </div>

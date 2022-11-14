@@ -64,11 +64,11 @@ const user = (store) => (next) => (action) => {
       const { user: { currentUser: { id } } } = store.getState();
       const { user: { token } } = store.getState();
       console.log(token);
-      axios.get(`${URL}players/${id}`/*, {
+      axios.get(`${URL}players/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }*/)
+      })
         .then((response) => {
           store.dispatch(loadDatas(response.data));
         })

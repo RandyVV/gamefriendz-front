@@ -1,9 +1,9 @@
 import {
   CHANGE_SELECT_VALUE,
   CHANGE_VALUE,
-  REMOVE_GAME,
   SAVE_GAMES,
   TOGGLE_MENU,
+  CATCH_GAME_ID,
 } from '../actions/games';
 
 const initialState = {
@@ -11,7 +11,7 @@ const initialState = {
   searchedGame: '',
   platform: '',
   gameIdToAdd: [],
-  gameIdToRemove: '',
+  gameIdToRemove: [],
   isMenuOpen: false,
   loading: true,
 };
@@ -39,7 +39,7 @@ function reducer(state = initialState, action = {}) {
         ...state,
         gameIdToAdd: action.value,
       };
-    case REMOVE_GAME:
+    case CATCH_GAME_ID:
       return {
         ...state,
         gameIdToRemove: action.value,
