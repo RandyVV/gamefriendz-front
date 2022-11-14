@@ -105,8 +105,8 @@ function Game() {
                       </span>
                     </button>
                   </div>
-                  <div ref={addToWantsToPlayRef} name="want" className="flex flex-row-reverse">
-                    <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" onClick={handleSubmit} type="submit">
+                  <div className="flex flex-row-reverse">
+                    <button ref={addToWantsToPlayRef} name="want" className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" onClick={handleSubmit} type="submit">
                       <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                         Ajouter à mes Envies
                       </span>
