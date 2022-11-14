@@ -32,7 +32,11 @@ const players = (store) => (next) => (action) => {
     }
     case SEARCH_PLAYER: {
       const { players: { searchedPlayer } } = store.getState();
+      const { user: { token } } = store.getState();
       axios.post(`${URL}players/search`, {
+        // headers: {
+        //   Authorization: `bearer ${token}`,
+        // },
         nickname: searchedPlayer,
       })
         .then((response) => {

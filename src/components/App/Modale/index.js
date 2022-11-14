@@ -36,6 +36,7 @@ function Modale() {
             placeholder="E-mail"
             value={email}
             onChange={handleChange}
+            required=""
           />
         </div>
         <div className="field">
@@ -46,6 +47,7 @@ function Modale() {
             placeholder="Mot de passe"
             value={password}
             onChange={handleChange}
+            required=""
           />
         </div>
         <button type="submit" onClick={handleLoginClick} className="settings__submit">Envoyer</button>
