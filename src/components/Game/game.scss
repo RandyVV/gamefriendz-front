@@ -9,6 +9,7 @@
 
 .releases {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
 
   &-platform {
@@ -18,6 +19,36 @@
   &-dates {
     margin-right: 5em;
   }
+}
+
+.add-game-form {
+  display: flex;
+  margin: auto;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &_selector {
+    color: white;
+    font-size: 1.2em;
+    
+    &__platform {
+      width: 100%;
+      height: vars.$gutter *1.2;
+      margin-bottom: vars.$gutter *0.8;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid vars.$light-color;
+      font-size: 0.9em;
+    }
+  }
+}
+
+.buttons {
+   display: flex; 
 }
 
 @media screen and (max-width: 640px ) {
