@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { FETCH_PLAYERS, SEARCH_PLAYER, savePlayers } from '../actions/players';
+import {
+  FETCH_PLAYERS,
+  SEARCH_PLAYER,
+  savePlayers,
+  savePlayerData,
+  FETCH_PLAYER_DATA,
+} from '../actions/players';
 
 // function getRandomInt(min, max) {
 //   min = Math.ceil(min);
@@ -10,7 +16,7 @@ import { FETCH_PLAYERS, SEARCH_PLAYER, savePlayers } from '../actions/players';
 // const randomPlayer = getRandomInt(21, 42);
 
 const players = (store) => (next) => (action) => {
-  const URL = 'http://randyvv-server.eddi.cloud/projet-02-game-friendz-back/public/api/';
+  const URL = 'http://randyvv-server.eddi.cloud/api/';
   switch (action.type) {
     case FETCH_PLAYERS: {
       axios.get(`${URL}players`)
@@ -31,6 +37,20 @@ const players = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(savePlayers(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      next(action);
+      break;
+    }
+    case FETCH_PLAYER_DATA: {
+      const { players: { searchedPlayerId } } = store.getState();
+      axios.get(`${URL}players/${searchedPlayerId}`)
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(savePlayerData(response.data));
         })
         .catch((error) => {
           console.log(error);

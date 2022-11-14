@@ -4,9 +4,12 @@
 // == Import
 // import PropTypes from 'prop-types';
 import './game.scss';
-import windowspic from 'src/assets/images/platform/windows.png';
 import { Link, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  changeSelectValue,
+  addGame,
+} from '../../actions/games';
 
 // == Composant
 function Game() {
@@ -15,7 +18,7 @@ function Game() {
   // description,
   // has_multiplayer_mode,
   // releases,
-
+  const dispatch = useDispatch();
   const { id } = useParams();
   const intId = parseInt(id, 10);
 
@@ -33,7 +36,18 @@ function Game() {
     return game;
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(addGame());
+  };
+
+  const handleSelect = (event) => {
+    dispatch(changeSelectValue(event.target.name, event.target.value));
+    console.log(event.target.name, event.target.value);
+  };
+
   const game = useSelector((state) => findGame(state.games.allGames, intId));
+  const currentReleases = game.releases;
   return (
     <div className="game">
       <div className="max-w-4xl mb-8 bg-darkbg rounded-lg border border-gray-200 shadow-md">
@@ -62,13 +76,21 @@ function Game() {
               <p className="mb-3 font-normal text-xl text-white">Multijoueurs :</p>
               <p className="mb-3 font-normal text-lg text-lightblue">{game.has_multiplayer_mode ? 'Oui' : 'Non'}</p>
             </div>
-          </div>
-          <div className="flex flex-row-reverse">
-            <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" type="button">
-              <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                Ajouter à mes Jeux
-              </span>
-            </button>
+            <form className="form" onSubmit={handleSubmit}>
+              <label htmlFor="platform_select" className="form-selector">Plateforme:
+                <select name="gameIdToAdd" className="form-platform" onChange={handleSelect}>
+                  <option className="form-options" value="">Choisis une plateforme</option>
+                  {currentReleases.map((release) => <option className="form-options" value={release.id}>{release.platform.name}</option>)}
+                </select>
+              </label>
+              <div className="flex flex-row-reverse">
+                <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" type="submit">
+                  <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    Ajouter à mes Jeux
+                  </span>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -76,9 +98,7 @@ function Game() {
   );
 }
 
-/*
-
-Game.propTypes = {
+/* Game.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   picture: PropTypes.string.isRequired,

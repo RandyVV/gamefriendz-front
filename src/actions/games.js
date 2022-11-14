@@ -9,6 +9,12 @@ export const saveGames = (games) => ({
   games: games,
 });
 
+export const ADD_GAME = 'ADD_GAME';
+export const addGame = (games) => ({
+  type: ADD_GAME,
+  games,
+});
+
 export const FETCH_GAMES = 'FETCH_GAMES';
 export const fetchGames = () => ({
   type: FETCH_GAMES,
@@ -22,8 +28,9 @@ export const changeValue = (field, value) => ({
 });
 
 export const CHANGE_SELECT_VALUE = 'CHANGE_SELECT_VALUE';
-export const changeSelectValue = (value) => ({
+export const changeSelectValue = (field, value) => ({
   type: CHANGE_SELECT_VALUE,
+  field,
   value,
 });
 

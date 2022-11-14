@@ -1,9 +1,12 @@
 /* eslint-disable camelcase */
 // == Import
-import { Link } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 import './playercard.scss';
-import avatar from 'src/assets/images/vava.png';
+import { useNavigate } from 'react-router-dom';
+import avatar from 'src/assets/images/avatars/avatar.png';
+import { useDispatch } from 'react-redux';
+import { fetchPlayerData, loadSearchedId } from '../../actions/players';
 
 // == Composant
 function PlayerCard({
@@ -12,6 +15,17 @@ function PlayerCard({
   // picture,
   discord_tag,
 }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    console.log('ca click');
+    dispatch(fetchPlayerData());
+    setTimeout(() => {
+      navigate(`/player/${id}`);
+    }, 500);
+  };
+
   return (
     <div className="playercard">
       <div className="playercard-wrapper">
@@ -19,7 +33,15 @@ function PlayerCard({
         <h4 className="playercard-title">{nickname}</h4>
         <h5 className="playercard-subtitle">Try Harder</h5>
         <p className="playercard-text">{discord_tag}</p>
-        <button className="playercard-btn" type="button"> <Link to={`/profile/${id}`}>Voir Plus</Link></button>
+        <button
+          className="playercard-btn"
+          type="button"
+          onClick={(event) => {
+            dispatch(loadSearchedId(id)); handleClick(event);
+          }}
+        >
+          Voir Plus
+        </button>
       </div>
     </div>
   );

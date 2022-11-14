@@ -9,6 +9,7 @@ const initialState = {
   allGames: '',
   searchedGame: '',
   platform: '',
+  gameIdToAdd: '',
   isMenuOpen: false,
   loading: true,
 };
@@ -34,7 +35,7 @@ function reducer(state = initialState, action = {}) {
     case CHANGE_SELECT_VALUE:
       return {
         ...state,
-        platform: action.value,
+        gameIdToAdd: action.value,
       };
     default:
       return state;

@@ -1,12 +1,17 @@
 import {
   CHANGE_SELECT_VALUE,
   CHANGE_VALUE,
+  LOAD_SEARCHED_ID,
   SAVE_PLAYERS,
+  SAVE_PLAYER_DATA,
 } from '../actions/players';
 
 const initialState = {
   allPlayers: '',
   searchedPlayer: '',
+  searchedPlayerId: '',
+  searchedPlayerData: '',
+  laoding: true,
   isMenuOpen: false,
   loadingPlayer: true,
 };
@@ -28,6 +33,17 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         platform: action.value,
+      };
+    case LOAD_SEARCHED_ID:
+      return {
+        ...state,
+        searchedPlayerId: action.searchedId,
+      };
+    case SAVE_PLAYER_DATA:
+      return {
+        ...state,
+        searchedPlayerData: action.playerData,
+        loading: false,
       };
     default:
       return state;

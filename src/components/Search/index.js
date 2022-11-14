@@ -46,7 +46,7 @@ function Search() {
   };
 
   const handleSelect = (event) => {
-    dispatch(changeSelectValue(event.target.value));
+    dispatch(changeSelectValue(event.target.name, event.target.value));
   };
 
   // eslint-disable-next-line consistent-return
