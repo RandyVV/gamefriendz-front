@@ -44,7 +44,7 @@ const user = (store) => (next) => (action) => {
       } = store.getState();
       console.log(email, password, discord, pseudo);
 
-      axios.post(`${URL}new/player`, {
+      axios.post(`${URL}players`, {
         email: email,
         discord_tag: discord,
         nickname: pseudo,

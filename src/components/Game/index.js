@@ -76,21 +76,32 @@ function Game() {
               <p className="mb-3 font-normal text-xl text-white">Multijoueurs :</p>
               <p className="mb-3 font-normal text-lg text-lightblue">{game.has_multiplayer_mode ? 'Oui' : 'Non'}</p>
             </div>
-            <form className="form" onSubmit={handleSubmit}>
-              <label htmlFor="platform_select" className="form-selector">Plateforme:
-                <select name="gameIdToAdd" className="form-platform" onChange={handleSelect}>
-                  <option className="form-options" value="">Choisis une plateforme</option>
-                  {currentReleases.map((release) => <option className="form-options" value={release.id}>{release.platform.name}</option>)}
-                </select>
-              </label>
-              <div className="flex flex-row-reverse">
-                <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" type="submit">
-                  <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                    Ajouter à mes Jeux
-                  </span>
-                </button>
-              </div>
-            </form>
+            <div className="add-game-form">
+              <form className="add-form" onSubmit={handleSubmit}>
+                <label htmlFor="platform_select" className="add-form_selector">Plateforme:
+                  <select name="gameIdToAdd" className="add-form_selector__platform" onChange={handleSelect}>
+                    <option className="form-options" value="">Choisis une plateforme</option>
+                    {currentReleases.map((release) => <option className="form-options" value={release.id}>{release.platform.name}</option>)}
+                  </select>
+                </label>
+                <div className="buttons">
+                  <div className="flex flex-row-reverse">
+                    <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" onClick={handleSubmit} type="submit">
+                      <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                        Ajouter à mes Jeux
+                      </span>
+                    </button>
+                  </div>
+                  <div className="flex flex-row-reverse">
+                    <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" type="submit">
+                      <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                        Ajouter à mes Envies
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
