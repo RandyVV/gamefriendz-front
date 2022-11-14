@@ -46,12 +46,22 @@ function Profile() {
               </label>
             </form>
             <div className="profile-games">
-              <h2 className="profile-subtitle">Mes jeux</h2>
-              {!loading && (
-              <ul className="profile-list">
-                {currentUser.owned_games.map((owned_game) => <li className="profile-item" key={owned_game.id}>{owned_game.game.title} - {owned_game.platform.name}<form className="form" onSubmit={handleSubmit}><button className="profile-item-button" value={owned_game.id} onClick={catchId} type="submit">Supprimer</button></form></li>)}
-              </ul>
-              )}
+              <div className="profile-games-wrapper">
+                <h2 className="profile-subtitle">Mes jeux</h2>
+                {!loading && (
+                <ul className="profile-list">
+                  {currentUser.owned_games.map((owned_game) => <li className="profile-item" key={owned_game.id}>{owned_game.game.title} - {owned_game.platform.name}<form className="form" onSubmit={handleSubmit}><button className="profile-item-button" value={owned_game.id} onClick={catchId} type="submit">Supprimer</button></form></li>)}
+                </ul>
+                )}
+              </div>
+              <div className="profile-games-wrappertwo">
+                <h2 className="profile-subtitle">Mes envies</h2>
+                {!loading && (
+                <ul className="profile-list">
+                  {currentUser.owned_games.map((owned_game) => <li className="profile-item" key={owned_game.id}>{owned_game.game.title} - {owned_game.platform.name}<form className="form" onSubmit={handleSubmit}><button className="profile-item-button" value={owned_game.id} onClick={catchId} type="submit">Supprimer</button></form></li>)}
+                </ul>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -69,7 +79,6 @@ function Profile() {
             <h2 className="profile-subtitle">{player.discord_tag}</h2>
             <div className="profile-games">
               <h2 className="profile-subtitle">Mes jeux</h2>
-              <h3 className="profile-lasttitle">Disponible ?</h3>
               <ul className="players-list">
                 {player.owned_games.map((owned_game) => <li className="profile-item">{owned_game.game.title} - {owned_game.platform.name}</li>)}
               </ul>
