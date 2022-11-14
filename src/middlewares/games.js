@@ -43,8 +43,6 @@ const games = (store) => (next) => (action) => {
       const { games: { gameIdToAdd } } = store.getState();
       const { user: { currentUser: { id } } } = store.getState();
       const { user: { token } } = store.getState();
-      console.log(gameIdToAdd, id, `bearer ${token}`);
-      // axios.post(url, data, options)
       axios.post(
         `${URL}players/${id}/addownedgames`,
         {
