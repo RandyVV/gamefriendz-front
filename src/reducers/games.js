@@ -1,6 +1,7 @@
 import {
   CHANGE_SELECT_VALUE,
   CHANGE_VALUE,
+  REMOVE_GAME,
   SAVE_GAMES,
   TOGGLE_MENU,
 } from '../actions/games';
@@ -9,7 +10,8 @@ const initialState = {
   allGames: '',
   searchedGame: '',
   platform: '',
-  gameIdToAdd: '',
+  gameIdToAdd: [],
+  gameIdToRemove: '',
   isMenuOpen: false,
   loading: true,
 };
@@ -36,6 +38,11 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         gameIdToAdd: action.value,
+      };
+    case REMOVE_GAME:
+      return {
+        ...state,
+        gameIdToRemove: action.value,
       };
     default:
       return state;

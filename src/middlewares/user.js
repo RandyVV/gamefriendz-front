@@ -19,6 +19,7 @@ const user = (store) => (next) => (action) => {
         password: password,
       })
         .then((response) => {
+          console.log(response.data);
           store.dispatch(connectUser(response.data.token, response.data.data));
           store.dispatch(foundUserDatas());
         })
@@ -61,8 +62,13 @@ const user = (store) => (next) => (action) => {
     }
     case FOUND_USER_DATAS: {
       const { user: { currentUser: { id } } } = store.getState();
-
-      axios.get(`${URL}players/${id}`)
+      const { user: { token } } = store.getState();
+      console.log(token);
+      axios.get(`${URL}players/${id}`/*, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }*/)
         .then((response) => {
           store.dispatch(loadDatas(response.data));
         })

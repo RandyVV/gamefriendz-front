@@ -4,6 +4,7 @@ import {
   SEARCH_GAME,
   saveGames,
   ADD_GAME,
+  REMOVE_GAME,
 } from '../actions/games';
 
 const games = (store) => (next) => (action) => {
@@ -40,9 +41,37 @@ const games = (store) => (next) => (action) => {
     }
     case ADD_GAME: {
       const { games: { gameIdToAdd } } = store.getState();
+      const gameId = parseInt(gameIdToAdd, 10);
       const { user: { currentUser: { id } } } = store.getState();
+      const { user: { token } } = store.getState();
+      console.log(gameId, id, `bearer ${token}`);
       axios.post(`${URL}players/${id}/addownedgames`, {
-        id: gameIdToAdd,
+        // headers: {
+        //   Authorization: `bearer ${token}`,
+        // },
+        id: gameId,
+      })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      next(action);
+      break;
+    }
+
+    case REMOVE_GAME: {
+      const { games: { gameIdToRemove } } = store.getState();
+      const { user: { currentUser: { id } } } = store.getState();
+      const { user: { token } } = store.getState();
+
+      axios.delete(`${URL}players/${id}/removeownedgames`, {
+        id: gameIdToRemove,
+        // headers: {
+        //   Authorization: `bearer ${token}`,
+        // },
       })
         .then((response) => {
           console.log(response.data);

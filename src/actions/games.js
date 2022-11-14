@@ -15,6 +15,12 @@ export const addGame = (games) => ({
   games,
 });
 
+export const REMOVE_GAME = 'REMOVE_GAME';
+export const removeGame = (games) => ({
+  type: REMOVE_GAME,
+  games,
+});
+
 export const FETCH_GAMES = 'FETCH_GAMES';
 export const fetchGames = () => ({
   type: FETCH_GAMES,
