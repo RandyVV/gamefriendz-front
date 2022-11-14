@@ -40,8 +40,11 @@ const games = (store) => (next) => (action) => {
     }
     case ADD_GAME: {
       const { games: { gameIdToAdd } } = store.getState();
-      const { user: { currentUser: { id } } } = store.getState();
+      const { user: { token, currentUser: { id } } } = store.getState();
       axios.post(`${URL}players/${id}/addownedgames`, {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
         id: gameIdToAdd,
       })
         .then((response) => {
