@@ -14,6 +14,7 @@ import {
   fetchPlayers,
   searchPlayer,
 } from '../../actions/players';
+import ErrorPage from '../ErrorPage';
 
 // == Composant
 function Search() {
@@ -24,6 +25,7 @@ function Search() {
   const loadingPlayers = useSelector((state) => state.players.loadingPlayer);
   const platforms = useSelector((state) => state.games.allPlatforms);
   const route = window.location.pathname;
+  const isLogged = useSelector((state) => state.user.isLogged);
 
   /** useEffect qui fait la requete a l'api pour récuperer les
    *  jeux, les joueurs et platforms au montage du composant */
@@ -75,7 +77,7 @@ function Search() {
     );
   }
   // eslint-disable-next-line no-else-return
-  else if (route === '/players') {
+  else if (route === '/players' && isLogged === true) {
     return (
       <div className="search">
         <div className="form-wrapper">
@@ -92,6 +94,12 @@ function Search() {
         </div>
         )}
       </div>
+    );
+  }
+  // eslint-disable-next-line no-else-return
+  else if (route === '/players' && isLogged === false) {
+    return (
+      <ErrorPage />
     );
   }
 }
