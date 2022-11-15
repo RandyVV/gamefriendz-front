@@ -9,16 +9,16 @@ export const saveGames = (games) => ({
   games: games,
 });
 
-export const ADD_GAME = 'ADD_GAME';
-export const addGame = (games) => ({
-  type: ADD_GAME,
-  games,
-});
-
 export const CATCH_GAME_ID = 'CATCH_GAME_ID';
 export const catchGameId = (value) => ({
   type: CATCH_GAME_ID,
   value,
+});
+
+export const ADD_GAME = 'ADD_GAME';
+export const addGame = (games) => ({
+  type: ADD_GAME,
+  games,
 });
 
 export const ADD_WANTED_GAME = 'ADD_WANTED_GAME';
@@ -32,6 +32,12 @@ export const removeGame = (games) => ({
   type: REMOVE_GAME,
   games,
 });
+
+export const REMOVE_WANTED_GAME = 'REMOVE_WANTED_GAME';
+export const removeWantedGame = () => ({
+  type: REMOVE_WANTED_GAME,
+});
+
 
 export const FETCH_GAMES = 'FETCH_GAMES';
 export const fetchGames = () => ({

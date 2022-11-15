@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   changeSelectValue,
   addGame,
+  addWantedGame,
 } from '../../actions/games';
 
 // == Composant
@@ -42,16 +43,16 @@ function Game() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(event.nativeEvent.submitter, addToOwnedGamesRef.current);
-    // if (event.nativeEvent.submitter === addToWantsToPlayRef.current) {
-    //   // on ajoute à ownedgames
-    //   console.log('wanted games');
-    // }
-    // else if (event.nativeEvent.submitter === addToOwnedGamesRef.current) {
-    //   // on ajoute à wantstoplay
-    //   console.log('owned games');
-    // }
-    dispatch(addGame());
+    if (event.nativeEvent.submitter === addToOwnedGamesRef.current) {
+      // on ajoute à ownedgames
+      console.log('owned games');
+      dispatch(addGame());
+    }
+    else if (event.nativeEvent.submitter === addToWantsToPlayRef.current) {
+      // on ajoute à wantstoplay
+      console.log('wanted games');
+      dispatch(addWantedGame());
+    }
   };
 
   const handleSelect = (event) => {
@@ -99,14 +100,14 @@ function Game() {
                 </label>
                 <div className="buttons">
                   <div className="flex flex-row-reverse">
-                    <button ref={addToOwnedGamesRef} name="owned" className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" onSubmit={handleSubmit} type="submit">
+                    <button ref={addToOwnedGamesRef} name="owned" className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" type="submit">
                       <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                         Ajouter à mes Jeux
                       </span>
                     </button>
                   </div>
                   <div className="flex flex-row-reverse">
-                    <button ref={addToWantsToPlayRef} name="want" className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" onClick={handleSubmit} type="submit">
+                    <button ref={addToWantsToPlayRef} name="want" className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" type="submit">
                       <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                         Ajouter à mes Envies
                       </span>
