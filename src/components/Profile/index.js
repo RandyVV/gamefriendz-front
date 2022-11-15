@@ -9,6 +9,7 @@ import {
   removeGame,
   removeWantedGame,
 } from '../../actions/games';
+import ErrorPage from '../ErrorPage';
 
 // == Composant
 function Profile() {
@@ -17,6 +18,7 @@ function Profile() {
   const loading = useSelector((state) => state.players.loading);
   const player = useSelector((state) => state.players.searchedPlayerData);
   const dispatch = useDispatch();
+  const isLogged = useSelector((state) => state.user.isLogged);
 
   const handleOwnedSubmit = (event) => {
     event.preventDefault();
@@ -33,6 +35,11 @@ function Profile() {
     dispatch(catchGameId(event.target.value));
   };
 
+  if (isLogged === false) {
+    return (
+      <ErrorPage />
+    );
+  }
   if (route === '/profile') {
     return (
       <div className="profile">
@@ -74,7 +81,6 @@ function Profile() {
       </div>
     );
   }
-
   return (
     <div className="profile">
       {!loading && (
