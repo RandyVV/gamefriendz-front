@@ -23,6 +23,7 @@ function Search() {
   const loading = useSelector((state) => state.games.loading);
   const loadingPlayers = useSelector((state) => state.players.loadingPlayer);
   const route = window.location.pathname;
+  const isLogged = useSelector((state) => state.user.isLogged);
 
   /** useEffect qui fait la requete a l'api pour récuperer les
    *  jeux et les joueurs au montage du composant */
@@ -92,7 +93,7 @@ function Search() {
     );
   }
   // eslint-disable-next-line no-else-return
-  else if (route === '/players') {
+  else if (route === '/players' && isLogged === true) {
     return (
       <div className="search">
         <div className="form-wrapper">
