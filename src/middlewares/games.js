@@ -3,10 +3,12 @@ import {
   FETCH_GAMES,
   SEARCH_GAME,
   saveGames,
+  savePlatform,
   ADD_GAME,
   REMOVE_GAME,
   ADD_WANTED_GAME,
   REMOVE_WANTED_GAME,
+  FETCH_PLATFORM,
 } from '../actions/games';
 
 const games = (store) => (next) => (action) => {
@@ -16,6 +18,18 @@ const games = (store) => (next) => (action) => {
       axios.get(`${URL}games`)
         .then((response) => {
           store.dispatch(saveGames(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      next(action);
+      break;
+    }
+    case FETCH_PLATFORM: {
+      axios.get(`${URL}platforms`)
+        .then((response) => {
+          store.dispatch(savePlatform(response.data));
         })
         .catch((error) => {
           console.log(error);

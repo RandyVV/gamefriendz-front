@@ -9,6 +9,17 @@ export const saveGames = (games) => ({
   games: games,
 });
 
+export const FETCH_PLATFORM = 'FETCH_PLATFORM';
+export const fetchPlatform = () => ({
+  type: FETCH_PLATFORM,
+});
+
+export const SAVE_PLATFORM = 'SAVE_PLATFORM';
+export const savePlatform = (platform) => ({
+  type: SAVE_PLATFORM,
+  platform,
+});
+
 export const CATCH_GAME_ID = 'CATCH_GAME_ID';
 export const catchGameId = (value) => ({
   type: CATCH_GAME_ID,
@@ -37,7 +48,6 @@ export const REMOVE_WANTED_GAME = 'REMOVE_WANTED_GAME';
 export const removeWantedGame = () => ({
   type: REMOVE_WANTED_GAME,
 });
-
 
 export const FETCH_GAMES = 'FETCH_GAMES';
 export const fetchGames = () => ({

@@ -4,10 +4,12 @@ import {
   SAVE_GAMES,
   TOGGLE_MENU,
   CATCH_GAME_ID,
+  SAVE_PLATFORM,
 } from '../actions/games';
 
 const initialState = {
   allGames: '',
+  allPlatforms: '',
   searchedGame: '',
   platform: '',
   gameIdToAdd: [],
@@ -28,6 +30,11 @@ function reducer(state = initialState, action = {}) {
         ...state,
         loading: false,
         allGames: action.games,
+      };
+    case SAVE_PLATFORM:
+      return {
+        ...state,
+        allPlatforms: action.platform,
       };
     case CHANGE_VALUE:
       return {
