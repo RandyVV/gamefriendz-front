@@ -5,7 +5,6 @@ import Card from 'src/components/Card';
 import PlayerCard from 'src/components/PlayerCard';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  changeSelectValue,
   changeValue,
   fetchGames,
   searchGame,
@@ -48,20 +47,6 @@ function Search() {
     dispatch(changeValue(event.target.name, event.target.value));
   };
 
-  const handleSelect = (event) => {
-    dispatch(changeSelectValue(event.target.name, event.target.value));
-  };
-
-  // eslint-disable-next-line consistent-return
-  // function filteredPlayers(status, loadedPlayers) {
-  //  if (status === false) {
-  //    const results = loadedPlayers.filter((loadedPlayer) => loadedPlayer.id <= 27);
-  //    return results;
-  //  }
-  // }
-
-  // const results = filteredPlayers(loadingPlayers, players);
-
   if (route === '/games') {
     return (
       <div className="search">
@@ -71,7 +56,7 @@ function Search() {
               <input className="form-input" type="text" name="searchedGame" onChange={handleChange} />
             </label>
             <label htmlFor="platform_select" className="form-selector">Plateforme:
-              <select name="platform" className="form-platform" onChange={handleSelect}>
+              <select name="platform" className="form-platform" onChange={handleChange}>
                 <option className="form-options" value="">Choisis une plateforme</option>
                 {!loading && (
                   platforms.map((platform) => <option className="form-options" key={platform.id} value={platform.name}>{platform.name}</option>)
