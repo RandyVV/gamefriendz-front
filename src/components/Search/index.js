@@ -14,6 +14,7 @@ import {
   fetchPlayers,
   searchPlayer,
 } from '../../actions/players';
+import ErrorPage from '../ErrorPage';
 
 // == Composant
 function Search() {
@@ -110,6 +111,12 @@ function Search() {
         </div>
         )}
       </div>
+    );
+  }
+  // eslint-disable-next-line no-else-return
+  else if (route === '/players' && isLogged === false) {
+    return (
+      <ErrorPage />
     );
   }
 }

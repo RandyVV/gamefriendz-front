@@ -9,6 +9,7 @@ import {
   removeGame,
   removeWantedGame,
 } from '../../actions/games';
+import ErrorPage from '../ErrorPage';
 
 // == Composant
 function Profile() {
@@ -17,6 +18,7 @@ function Profile() {
   const loading = useSelector((state) => state.players.loading);
   const player = useSelector((state) => state.players.searchedPlayerData);
   const dispatch = useDispatch();
+  const isLogged = useSelector((state) => state.user.isLogged);
 
   const handleOwnedSubmit = (event) => {
     event.preventDefault();
@@ -74,26 +76,34 @@ function Profile() {
       </div>
     );
   }
-
-  return (
-    <div className="profile">
-      {!loading && (
-        <div className="profile-wrapper">
-          <div className="profile-wrapper-bg"><img className="profile-img" src={avatar} alt="" /></div>
-          <div className="profile-wrapper-info">
-            <h1 className="profile-title">{player.nickname}</h1>
-            <h2 className="profile-subtitle">{player.discord_tag}</h2>
-            <div className="profile-games">
-              <h2 className="profile-subtitle">Mes jeux</h2>
-              <ul className="players-list">
-                {player.owned_games.map((owned_game) => <li className="profile-item">{owned_game.game.title} - {owned_game.platform.name}</li>)}
-              </ul>
+  // eslint-disable-next-line no-else-return
+  else if (route === `/player/${id}` && isLogged === true) {
+    return (
+      <div className="profile">
+        {!loading && (
+          <div className="profile-wrapper">
+            <div className="profile-wrapper-bg"><img className="profile-img" src={avatar} alt="" /></div>
+            <div className="profile-wrapper-info">
+              <h1 className="profile-title">{player.nickname}</h1>
+              <h2 className="profile-subtitle">{player.discord_tag}</h2>
+              <div className="profile-games">
+                <h2 className="profile-subtitle">Mes jeux</h2>
+                <ul className="players-list">
+                  {player.owned_games.map((owned_game) => <li className="profile-item">{owned_game.game.title} - {owned_game.platform.name}</li>)}
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
-  );
+        )}
+      </div>
+    );
+  }
+  // eslint-disable-next-line no-else-return
+  else if (route === '/player' && isLogged === false) {
+    return (
+      <ErrorPage />
+    );
+  }
 }
 
 // == Export
