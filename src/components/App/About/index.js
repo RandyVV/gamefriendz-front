@@ -10,7 +10,7 @@ function About() {
       <blockquote className="text-xl text-center font-semibold">
         <p>Développé avec amour par des gamers, pour des gamers.</p>
       </blockquote>
-      <div className="flex justify-center items-center space-x-10 mt-10">
+      <div className="flex flex-wrap justify-center items-center space-x-4 sm:space-x-10 mt-10">
         <div className="flex flex-col items-center pb-10">
           <img className="mb-3 w-24 h-24 rounded-full shadow-lg" src={avatarHomme} alt="Randy" />
           <h5 className="mb-1 text-xl font-medium text-gray-900 ">Randy</h5>
