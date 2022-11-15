@@ -19,7 +19,6 @@ const user = (store) => (next) => (action) => {
         password: password,
       })
         .then((response) => {
-          console.log(response.data);
           store.dispatch(connectUser(response.data.token, response.data.data));
           store.dispatch(foundUserDatas());
         })
@@ -42,7 +41,6 @@ const user = (store) => (next) => (action) => {
           },
         },
       } = store.getState();
-      console.log(email, password, discord, pseudo);
 
       axios.post(`${URL}players`, {
         email: email,
@@ -63,7 +61,6 @@ const user = (store) => (next) => (action) => {
     case FOUND_USER_DATAS: {
       const { user: { currentUser: { id } } } = store.getState();
       const { user: { token } } = store.getState();
-      console.log(token);
       axios.get(`${URL}players/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,

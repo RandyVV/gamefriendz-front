@@ -33,12 +33,17 @@ const players = (store) => (next) => (action) => {
     case SEARCH_PLAYER: {
       const { players: { searchedPlayer } } = store.getState();
       const { user: { token } } = store.getState();
-      axios.post(`${URL}players/search`, {
-        // headers: {
-        //   Authorization: `bearer ${token}`,
-        // },
-        nickname: searchedPlayer,
-      })
+      axios.post(
+        `${URL}players/search`,
+        {
+          nickname: searchedPlayer,
+        },
+        {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        },
+      )
         .then((response) => {
           store.dispatch(savePlayers(response.data));
         })
@@ -51,7 +56,12 @@ const players = (store) => (next) => (action) => {
     }
     case FETCH_PLAYER_DATA: {
       const { players: { searchedPlayerId } } = store.getState();
-      axios.get(`${URL}players/${searchedPlayerId}`)
+      const { user: { token } } = store.getState();
+      axios.get(`${URL}players/${searchedPlayerId}`, {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      })
         .then((response) => {
           console.log(response.data);
           store.dispatch(savePlayerData(response.data));

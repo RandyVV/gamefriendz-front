@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   catchGameId,
   removeGame,
+  removeWantedGame,
 } from '../../actions/games';
 
 // == Composant
@@ -17,9 +18,14 @@ function Profile() {
   const player = useSelector((state) => state.players.searchedPlayerData);
   const dispatch = useDispatch();
 
-  const handleSubmit = (event) => {
+  const handleOwnedSubmit = (event) => {
     event.preventDefault();
     dispatch(removeGame());
+  };
+
+  const handlewantedSubmit = (event) => {
+    event.preventDefault();
+    dispatch(removeWantedGame());
   };
 
   const catchId = (event) => {
@@ -50,7 +56,7 @@ function Profile() {
                 <h2 className="profile-subtitle">Mes jeux</h2>
                 {!loading && (
                 <ul className="profile-list">
-                  {currentUser.owned_games.map((owned_game) => <li className="profile-item" key={owned_game.id}>{owned_game.game.title} - {owned_game.platform.name}<form className="form" onSubmit={handleSubmit}><button className="profile-item-button" value={owned_game.id} onClick={catchId} type="submit">Supprimer</button></form></li>)}
+                  {currentUser.owned_games.map((owned_game) => <li className="profile-item" key={owned_game.id}>{owned_game.game.title} - {owned_game.platform.name}<form className="form" onSubmit={handleOwnedSubmit}><button className="profile-item-button" name="jeux-possedes" value={owned_game.id} onClick={catchId} type="submit">Supprimer</button></form></li>)}
                 </ul>
                 )}
               </div>
@@ -58,7 +64,7 @@ function Profile() {
                 <h2 className="profile-subtitle">Mes envies</h2>
                 {!loading && (
                 <ul className="profile-list">
-                  {currentUser.owned_games.map((owned_game) => <li className="profile-item" key={owned_game.id}>{owned_game.game.title} - {owned_game.platform.name}<form className="form" onSubmit={handleSubmit}><button className="profile-item-button" value={owned_game.id} onClick={catchId} type="submit">Supprimer</button></form></li>)}
+                  {currentUser.wants_to_play.map((want_to_play) => <li className="profile-item" key={want_to_play.id}>{want_to_play.game.title} - {want_to_play.platform.name}<form className="form" onSubmit={handlewantedSubmit}><button className="profile-item-button" name="jeux-voulut" value={want_to_play.id} onClick={catchId} type="submit">Supprimer</button></form></li>)}
                 </ul>
                 )}
               </div>
