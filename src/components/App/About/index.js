@@ -6,7 +6,7 @@ import avatarFemme from 'src/assets/images/avatars/avatar-femme.png';
 // == Composant
 function About() {
   return (
-    <div className="m-0">
+    <div className="container mx-auto text-center">
       <h1 className="home-title">A Propos</h1>
       <p className="text-xl text-center font-semibold">Développé avec amour par des gamers, pour des gamers.</p>
       <div className="flex justify-center md:items-center space-x-10 mt-10">
