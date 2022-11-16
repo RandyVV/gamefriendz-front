@@ -83,6 +83,7 @@ function Menu() {
         </NavLink>
         )}
 
+        {!isLogged && (
         <NavLink
           onClick={handleMenuClick}
           className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
@@ -91,6 +92,7 @@ function Menu() {
         >
           S'inscrire
         </NavLink>
+        )}
       </nav>
     </div>
   );
