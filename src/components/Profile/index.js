@@ -9,7 +9,7 @@ import {
   removeGame,
   removeWantedGame,
 } from '../../actions/games';
-import ErrorPage from '../ErrorPage';
+import Forbidden from '../Forbidden';
 
 // == Composant
 function Profile() {
@@ -37,7 +37,7 @@ function Profile() {
 
   if (isLogged === false) {
     return (
-      <ErrorPage />
+      <Forbidden />
     );
   }
   if (route === '/profile') {
