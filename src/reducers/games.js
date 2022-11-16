@@ -15,7 +15,8 @@ const initialState = {
   gameIdToAdd: [],
   gameIdToRemove: [],
   isMenuOpen: false,
-  loading: true,
+  gameLoading: true,
+  platformLoading: true,
 };
 
 function reducer(state = initialState, action = {}) {
@@ -28,12 +29,13 @@ function reducer(state = initialState, action = {}) {
     case SAVE_GAMES:
       return {
         ...state,
-        loading: false,
+        gameLoading: false,
         allGames: action.games,
       };
     case SAVE_PLATFORM:
       return {
         ...state,
+        platformLoading: false,
         allPlatforms: action.platform,
       };
     case CHANGE_VALUE:
