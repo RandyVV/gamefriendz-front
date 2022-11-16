@@ -2,6 +2,7 @@
 
 .settings {
   position: fixed;
+  z-index: 3;
   top: 2.1em;
   right: -1.5em;
   margin: vars.$gutter;
