@@ -12,6 +12,7 @@ import { fetchPlayerData, loadSearchedId } from '../../actions/players';
 function PlayerCard({
   id,
   nickname,
+  available,
   // picture,
   discord_tag,
 }) {
@@ -25,12 +26,14 @@ function PlayerCard({
     }, 500);
   };
 
+  console.log(available);
+
   return (
     <div className="playercard">
       <div className="playercard-wrapper">
         <img className="playercard-img" src={avatar} alt="" />
         <h4 className="playercard-title">{nickname}</h4>
-        <h5 className="playercard-subtitle">Try Harder</h5>
+        <h5 className="playercard-subtitle">{available ? 'Disponible' : 'Indisponible'}<div className={available ? 'light dispo' : 'light indispo'} /></h5>
         <p className="playercard-text">{discord_tag}</p>
         <button
           className="playercard-btn"
