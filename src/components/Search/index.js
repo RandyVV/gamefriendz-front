@@ -5,15 +5,16 @@ import Card from 'src/components/Card';
 import PlayerCard from 'src/components/PlayerCard';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  changeSelectValue,
   changeValue,
   fetchGames,
   searchGame,
+  fetchPlatform,
 } from '../../actions/games';
 import {
   fetchPlayers,
   searchPlayer,
 } from '../../actions/players';
+import ErrorPage from '../ErrorPage';
 
 // == Composant
 function Search() {
@@ -22,13 +23,16 @@ function Search() {
   const players = useSelector((state) => state.players.allPlayers);
   const loading = useSelector((state) => state.games.loading);
   const loadingPlayers = useSelector((state) => state.players.loadingPlayer);
+  const platforms = useSelector((state) => state.games.allPlatforms);
   const route = window.location.pathname;
+  const isLogged = useSelector((state) => state.user.isLogged);
 
   /** useEffect qui fait la requete a l'api pour récuperer les
-   *  jeux et les joueurs au montage du composant */
+   *  jeux, les joueurs et platforms au montage du composant */
   useEffect(() => {
     dispatch(fetchGames());
     dispatch(fetchPlayers());
+    dispatch(fetchPlatform());
   }, []);
 
   const handleSubmit = (event) => {
@@ -45,20 +49,6 @@ function Search() {
     dispatch(changeValue(event.target.name, event.target.value));
   };
 
-  const handleSelect = (event) => {
-    dispatch(changeSelectValue(event.target.name, event.target.value));
-  };
-
-  // eslint-disable-next-line consistent-return
-  // function filteredPlayers(status, loadedPlayers) {
-  //  if (status === false) {
-  //    const results = loadedPlayers.filter((loadedPlayer) => loadedPlayer.id <= 27);
-  //    return results;
-  //  }
-  // }
-
-  // const results = filteredPlayers(loadingPlayers, players);
-
   if (route === '/games') {
     return (
       <div className="search">
@@ -68,21 +58,16 @@ function Search() {
               <input className="form-input" type="text" name="searchedGame" onChange={handleChange} />
             </label>
             <label htmlFor="platform_select" className="form-selector">Plateforme:
-              <select name="platform" className="form-platform" onChange={handleSelect}>
+              <select name="platform" className="form-platform" onChange={handleChange}>
                 <option className="form-options" value="">Choisis une plateforme</option>
-                <option className="form-options" value="PC">PC</option>
-                <option className="form-options" value="Playstation 4">PS4</option>
-                <option className="form-options" value="Playstation 5">PS5</option>
-                <option className="form-options" value="Xbox One">Xbox One</option>
-                <option className="form-options" value="Xbox Series X">Xbox Series</option>
-                <option className="form-options" value="Nintendo Switch">Switch</option>
-                <option className="form-options" value="Mobile">Mobile</option>
+                {!loading && (
+                  platforms.map((platform) => <option className="form-options" key={platform.id} value={platform.name}>{platform.name}</option>)
+                )}
               </select>
             </label>
             <button className="form-button" type="submit"> Rechercher </button>
           </form>
         </div>
-
         {!loading && (
         <div className="home-cards">
           {games.map((game) => <Card key={game.id} {...game} />)}
@@ -92,7 +77,7 @@ function Search() {
     );
   }
   // eslint-disable-next-line no-else-return
-  else if (route === '/players') {
+  else if (route === '/players' && isLogged === true) {
     return (
       <div className="search">
         <div className="form-wrapper">
@@ -109,6 +94,12 @@ function Search() {
         </div>
         )}
       </div>
+    );
+  }
+  // eslint-disable-next-line no-else-return
+  else if (route === '/players' && isLogged === false) {
+    return (
+      <ErrorPage />
     );
   }
 }

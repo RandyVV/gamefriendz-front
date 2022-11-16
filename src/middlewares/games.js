@@ -3,7 +3,12 @@ import {
   FETCH_GAMES,
   SEARCH_GAME,
   saveGames,
+  savePlatform,
   ADD_GAME,
+  REMOVE_GAME,
+  ADD_WANTED_GAME,
+  REMOVE_WANTED_GAME,
+  FETCH_PLATFORM,
 } from '../actions/games';
 
 const games = (store) => (next) => (action) => {
@@ -13,6 +18,18 @@ const games = (store) => (next) => (action) => {
       axios.get(`${URL}games`)
         .then((response) => {
           store.dispatch(saveGames(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      next(action);
+      break;
+    }
+    case FETCH_PLATFORM: {
+      axios.get(`${URL}platforms`)
+        .then((response) => {
+          store.dispatch(savePlatform(response.data));
         })
         .catch((error) => {
           console.log(error);
@@ -37,15 +54,102 @@ const games = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
+    // Owned Games
     case ADD_GAME: {
       const { games: { gameIdToAdd } } = store.getState();
-      const { user: { token, currentUser: { id } } } = store.getState();
-      axios.post(`${URL}players/${id}/addownedgames`, {
-        headers: {
-          Authorization: `bearer ${token}`,
+      const { user: { currentUser: { id } } } = store.getState();
+      const { user: { token } } = store.getState();
+      axios.post(
+        `${URL}players/${id}/addownedgames`,
+        {
+          id: gameIdToAdd,
         },
-        id: gameIdToAdd,
-      })
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      next(action);
+      break;
+    }
+    case REMOVE_GAME: {
+      const { games: { gameIdToRemove } } = store.getState();
+      const { user: { currentUser: { id } } } = store.getState();
+      const { user: { token } } = store.getState();
+      console.log(gameIdToRemove);
+      axios.delete(
+        `${URL}players/${id}/removeownedgames`,
+        {
+          data: {
+            id: gameIdToRemove,
+          },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      next(action);
+      break;
+    }
+
+    // Wanted Games
+    case ADD_WANTED_GAME: {
+      const { games: { gameIdToAdd } } = store.getState();
+      const { user: { currentUser: { id } } } = store.getState();
+      const { user: { token } } = store.getState();
+      axios.post(
+        `${URL}players/${id}/addwantstoplay`,
+        {
+          id: gameIdToAdd,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      next(action);
+      break;
+    }
+    case REMOVE_WANTED_GAME: {
+      const { games: { gameIdToRemove } } = store.getState();
+      const { user: { currentUser: { id } } } = store.getState();
+      const { user: { token } } = store.getState();
+      console.log(gameIdToRemove);
+      axios.delete(
+        `${URL}players/${id}/removewantstoplay`,
+        {
+          data: {
+            id: gameIdToRemove,
+          },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
         .then((response) => {
           // console.log(response.data);
         })

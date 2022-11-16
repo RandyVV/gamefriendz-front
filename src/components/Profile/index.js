@@ -3,16 +3,43 @@
 // == Import
 import './profile.scss';
 import avatar from 'src/assets/images/avatars/avatar.png';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  catchGameId,
+  removeGame,
+  removeWantedGame,
+} from '../../actions/games';
+import ErrorPage from '../ErrorPage';
 
 // == Composant
 function Profile() {
   const currentUser = useSelector((state) => state.user.currentUser);
   const route = window.location.pathname;
   const loading = useSelector((state) => state.players.loading);
-
   const player = useSelector((state) => state.players.searchedPlayerData);
+  const dispatch = useDispatch();
+  const isLogged = useSelector((state) => state.user.isLogged);
 
+  const handleOwnedSubmit = (event) => {
+    event.preventDefault();
+    dispatch(removeGame());
+  };
+
+  const handlewantedSubmit = (event) => {
+    event.preventDefault();
+    dispatch(removeWantedGame());
+  };
+
+  const catchId = (event) => {
+    console.log(event.target.value);
+    dispatch(catchGameId(event.target.value));
+  };
+
+  if (isLogged === false) {
+    return (
+      <ErrorPage />
+    );
+  }
   if (route === '/profile') {
     return (
       <div className="profile">
@@ -32,20 +59,28 @@ function Profile() {
               </label>
             </form>
             <div className="profile-games">
-              <h2 className="profile-subtitle">Mes jeux</h2>
-              <h3 className="profile-lasttitle">Disponible ?</h3>
-              {!loading && (
-              <ul className="profile-list">
-                {currentUser.owned_games.map((owned_game) => <li className="profile-item">{owned_game.game.title} - {owned_game.platform.name}<button className="profile-item-button" type="button">Supprimer</button></li>)}
-              </ul>
-              )}
+              <div className="profile-games-wrapper">
+                <h2 className="profile-subtitle">Mes jeux</h2>
+                {!loading && (
+                <ul className="profile-list">
+                  {currentUser.owned_games.map((owned_game) => <li className="profile-item" key={owned_game.id}>{owned_game.game.title} - {owned_game.platform.name}<form className="owned-form" onSubmit={handleOwnedSubmit}><button className="profile-item-button" name="jeux-possedes" value={owned_game.id} onClick={catchId} type="submit">Supprimer</button></form></li>)}
+                </ul>
+                )}
+              </div>
+              <div className="profile-games-wrappertwo">
+                <h2 className="profile-subtitle">Mes envies</h2>
+                {!loading && (
+                <ul className="profile-list">
+                  {currentUser.wants_to_play.map((want_to_play) => <li className="profile-item" key={want_to_play.id}>{want_to_play.game.title} - {want_to_play.platform.name}<form className="wanted-form" onSubmit={handlewantedSubmit}><button className="profile-item-button" name="jeux-voulut" value={want_to_play.id} onClick={catchId} type="submit">Supprimer</button></form></li>)}
+                </ul>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
     );
   }
-
   return (
     <div className="profile">
       {!loading && (
@@ -56,7 +91,6 @@ function Profile() {
             <h2 className="profile-subtitle">{player.discord_tag}</h2>
             <div className="profile-games">
               <h2 className="profile-subtitle">Mes jeux</h2>
-              <h3 className="profile-lasttitle">Disponible ?</h3>
               <ul className="players-list">
                 {player.owned_games.map((owned_game) => <li className="profile-item">{owned_game.game.title} - {owned_game.platform.name}</li>)}
               </ul>
