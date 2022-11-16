@@ -19,7 +19,6 @@ function PlayerCard({
   const navigate = useNavigate();
 
   const handleClick = () => {
-    console.log('ca click');
     dispatch(fetchPlayerData());
     setTimeout(() => {
       navigate(`/player/${id}`);

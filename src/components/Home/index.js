@@ -22,7 +22,7 @@ function Home() {
   }, []);
 
   const games = useSelector((state) => state.games.allGames);
-  const loading = useSelector((state) => state.games.loading);
+  const loading = useSelector((state) => state.games.gameLoading);
 
   // eslint-disable-next-line consistent-return
   function filteredGames(status, loadedGames) {

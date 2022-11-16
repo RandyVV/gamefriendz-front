@@ -21,7 +21,8 @@ function Search() {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games.allGames);
   const players = useSelector((state) => state.players.allPlayers);
-  const loading = useSelector((state) => state.games.loading);
+  const gameLoading = useSelector((state) => state.games.gameLoading);
+  const platformLoading = useSelector((state) => state.games.platformLoading);
   const loadingPlayers = useSelector((state) => state.players.loadingPlayer);
   const platforms = useSelector((state) => state.games.allPlatforms);
   const route = window.location.pathname;
@@ -60,7 +61,7 @@ function Search() {
             <label htmlFor="platform_select" className="form-selector">Plateforme:
               <select name="platform" className="form-platform" onChange={handleChange}>
                 <option className="form-options" value="">Choisis une plateforme</option>
-                {!loading && (
+                {!platformLoading && (
                   platforms.map((platform) => <option className="form-options" key={platform.id} value={platform.name}>{platform.name}</option>)
                 )}
               </select>
@@ -68,7 +69,7 @@ function Search() {
             <button className="form-button" type="submit"> Rechercher </button>
           </form>
         </div>
-        {!loading && (
+        {!gameLoading && (
         <div className="home-cards">
           {games.map((game) => <Card key={game.id} {...game} />)}
         </div>

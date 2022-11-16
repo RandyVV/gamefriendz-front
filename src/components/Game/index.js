@@ -57,7 +57,6 @@ function Game() {
 
   const handleSelect = (event) => {
     dispatch(changeSelectValue(event.target.name, event.target.value));
-    console.log(event.target.name, event.target.value);
   };
 
   const game = useSelector((state) => findGame(state.games.allGames, intId));
@@ -100,17 +99,13 @@ function Game() {
                 </label>
                 <div className="buttons">
                   <div className="flex flex-row-reverse">
-                    <button ref={addToOwnedGamesRef} name="owned" className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" type="submit">
-                      <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                        Ajouter à mes Jeux
-                      </span>
+                    <button ref={addToOwnedGamesRef} name="owned" className="sm:mr-2 sm:py-2 sm:px-3 sm:text-base sm:font-medium sm:text-white sm:bg-primary sm:rounded-lg sm:hover:bg-altprimary max-[640px]:hidden" type="submit">
+                      Ajouter à mes Jeux
                     </button>
                   </div>
                   <div className="flex flex-row-reverse">
-                    <button ref={addToWantsToPlayRef} name="want" className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-r from-alt-color to-pink group-hover:from-alt-color group-hover:to-pink hover:text-white focus:ring-4 focus:outline-none focus:ring-primary" type="submit">
-                      <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                        Ajouter à mes Envies
-                      </span>
+                    <button ref={addToWantsToPlayRef} name="want" className="sm:mr-2 sm:py-2 sm:px-3 sm:text-base sm:font-medium sm:text-white sm:bg-primary sm:rounded-lg sm:hover:bg-altprimary max-[640px]:hidden" type="submit">
+                      Ajouter à mes Envies
                     </button>
                   </div>
                 </div>

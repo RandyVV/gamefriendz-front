@@ -6,7 +6,7 @@ import './footer.scss';
 // == Composant
 function Footer() {
   return (
-    <footer className="p-4 z-0 bg-darkbg sm:p-6">
+    <footer className="p-4 z-10 bg-darkbg sm:p-6">
       <div className="md:flex md:justify-between">
         <div className="mb-6 md:mb-0">
           <Link to="/" className="flex items-center">
