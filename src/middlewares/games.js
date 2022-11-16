@@ -62,7 +62,7 @@ const games = (store) => (next) => (action) => {
       const { user: { currentUser: { id } } } = store.getState();
       const { user: { token } } = store.getState();
       axios.post(
-        `${URL}players/${id}/addownedgames`,
+        `${URL}players/${id}/ownedgames`,
         {
           id: gameIdToAdd,
         },
@@ -88,7 +88,7 @@ const games = (store) => (next) => (action) => {
       const { user: { token } } = store.getState();
       console.log(gameIdToRemove);
       axios.delete(
-        `${URL}players/${id}/removeownedgames`,
+        `${URL}players/${id}/ownedgames`,
         {
           data: {
             id: gameIdToRemove,
@@ -116,7 +116,7 @@ const games = (store) => (next) => (action) => {
       const { user: { currentUser: { id } } } = store.getState();
       const { user: { token } } = store.getState();
       axios.post(
-        `${URL}players/${id}/addwantstoplay`,
+        `${URL}players/${id}/wantstoplay`,
         {
           id: gameIdToAdd,
         },
@@ -142,7 +142,7 @@ const games = (store) => (next) => (action) => {
       const { user: { token } } = store.getState();
       console.log(gameIdToRemove);
       axios.delete(
-        `${URL}players/${id}/removewantstoplay`,
+        `${URL}players/${id}/wantstoplay`,
         {
           data: {
             id: gameIdToRemove,
