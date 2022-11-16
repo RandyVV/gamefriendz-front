@@ -10,6 +10,7 @@ import {
   REMOVE_WANTED_GAME,
   FETCH_PLATFORM,
 } from '../actions/games';
+import { foundUserDatas } from '../actions/user';
 
 const games = (store) => (next) => (action) => {
   const URL = 'http://randyvv-server.eddi.cloud/api/';
@@ -99,6 +100,7 @@ const games = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response.data);
+          store.dispatch(foundUserDatas());
         })
         .catch((error) => {
           console.log(error);
@@ -152,6 +154,7 @@ const games = (store) => (next) => (action) => {
       )
         .then((response) => {
           // console.log(response.data);
+          store.dispatch(foundUserDatas());
         })
         .catch((error) => {
           console.log(error);
