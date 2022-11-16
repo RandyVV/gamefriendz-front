@@ -70,7 +70,7 @@ function Search() {
           </form>
         </div>
         {!gameLoading && (
-        <div className="home-cards">
+        <div className="game-cards">
           {games.map((game) => <Card key={game.id} {...game} />)}
         </div>
         )}
