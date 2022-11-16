@@ -9,6 +9,7 @@ import xboxpic from 'src/assets/images/platform/xbox-logo.png';
 import switchpic from 'src/assets/images/platform/switch-logo.png';
 import androidpic from 'src/assets/images/platform/android-logo.png';
 import discordpic from 'src/assets/images/discord-logo.png';
+// import homebg from 'src/assets/images/home-wall.jpg';
 import { useEffect } from 'react';
 import { fetchGames } from '../../actions/games';
 
@@ -32,6 +33,8 @@ function Home() {
     }
   }
 
+  // <img className="home-bg" src={homebg} alt="" />
+
   const results = filteredGames(loading, games);
 
   return (
@@ -39,6 +42,7 @@ function Home() {
       {!loading && (
         <>
           <div className="home-wrapper">
+            {/* <div className="home-content"> */}
             <div className="home-text">
               <h1 className="home-text-title">Bienvenue sur Game FriendZ</h1>
               <p>Ici, tu pourras trouver facilement de meilleurs coéquipiers au sein d'une communauté de gamers aguerris !</p>
@@ -56,6 +60,8 @@ function Home() {
               <img className="w-13 h-13" src={discordpic} alt="logo discord" />
             </div>
             <p className="home-join">Rejoins-nous sur Discord</p>
+            {/* </div> */}
+            <div className="home-bg" />
           </div>
           <h1 className="home-title">Les Jeux du moment</h1>
           <div className="home-cards">
