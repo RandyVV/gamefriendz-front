@@ -7,14 +7,6 @@ import {
   FETCH_PLAYER_DATA,
 } from '../actions/players';
 
-// function getRandomInt(min, max) {
-//   min = Math.ceil(min);
-//   max = Math.floor(max);
-//   return Math.floor(Math.random() * (max - min)) + min;
-// }
-
-// const randomPlayer = getRandomInt(21, 42);
-
 const players = (store) => (next) => (action) => {
   const URL = 'http://randyvv-server.eddi.cloud/api/';
   switch (action.type) {
@@ -63,7 +55,6 @@ const players = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
           store.dispatch(savePlayerData(response.data));
         })
         .catch((error) => {

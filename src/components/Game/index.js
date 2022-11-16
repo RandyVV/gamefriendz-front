@@ -57,7 +57,6 @@ function Game() {
 
   const handleSelect = (event) => {
     dispatch(changeSelectValue(event.target.name, event.target.value));
-    console.log(event.target.name, event.target.value);
   };
 
   const game = useSelector((state) => findGame(state.games.allGames, intId));

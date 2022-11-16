@@ -41,7 +41,6 @@ const games = (store) => (next) => (action) => {
     }
     case SEARCH_GAME: {
       const { games: { searchedGame, platform } } = store.getState();
-      console.log(searchedGame, platform);
       axios.post(`${URL}games/search`, {
         title: searchedGame,
         platform: platform,
@@ -154,7 +153,7 @@ const games = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(foundUserDatas());
         })
         .catch((error) => {
