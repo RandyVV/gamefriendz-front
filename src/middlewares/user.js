@@ -41,7 +41,6 @@ const user = (store) => (next) => (action) => {
           },
         },
       } = store.getState();
-      console.log(email, password, discord, pseudo);
 
       axios.post(`${URL}players`, {
         email: email,
@@ -50,7 +49,7 @@ const user = (store) => (next) => (action) => {
         password: password,
       })
         .then((response) => {
-          console.log(response.data.pseudo);
+          // console.log(response.data.pseudo);
         })
         .catch((error) => {
           console.log(error);

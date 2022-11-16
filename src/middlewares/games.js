@@ -23,7 +23,6 @@ const games = (store) => (next) => (action) => {
     }
     case SEARCH_GAME: {
       const { games: { searchedGame, platform } } = store.getState();
-      console.log(searchedGame, platform);
       axios.post(`${URL}games/search`, {
         title: searchedGame,
         platform: platform,
@@ -48,7 +47,7 @@ const games = (store) => (next) => (action) => {
         id: gameIdToAdd,
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
         })
         .catch((error) => {
           console.log(error);

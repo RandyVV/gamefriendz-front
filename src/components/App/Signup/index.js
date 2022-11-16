@@ -24,13 +24,11 @@ function Signup() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(password, confirmPassword);
     if (password !== confirmPassword) {
       alert("The passwords doesn't match");
       return false; // The form won't submit
     }
     else {
-      console.log('Submit passe');
       dispatch(signup());
       redirect('/');
     }
