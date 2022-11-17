@@ -164,6 +164,10 @@
   .profile {
     width: 100%;
 
+    &-infos {
+      width: 80%;
+    }
+
     &-games {
       display: flex;
       width: 85%;
@@ -171,6 +175,7 @@
       &-wrapper {
         max-width: 90%;
         padding-left: 0;
+
       }
   
       &-wrappertwo {

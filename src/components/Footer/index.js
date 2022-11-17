@@ -25,7 +25,6 @@ function Footer() {
   }
 
   const userAdmin = findAdminToBool(findAdmin(userRoles, loading));
-  console.log(userAdmin);
   return (
     <footer className="p-4 z-10 bg-darkbg sm:p-6">
       <div className="md:flex md:justify-between">
