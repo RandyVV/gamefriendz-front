@@ -74,6 +74,7 @@ const games = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response.data);
+          alert('Le jeu a bien été ajouté à la liste !');
         })
         .catch((error) => {
           console.log(error);
@@ -101,6 +102,7 @@ const games = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(foundUserDatas());
+          alert('Le jeu a bien été supprimé de la liste !');
         })
         .catch((error) => {
           console.log(error);
@@ -128,6 +130,7 @@ const games = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response.data);
+          alert('Le jeu a été ajouté à la liste d\'envies !');
         })
         .catch((error) => {
           console.log(error);
@@ -155,6 +158,7 @@ const games = (store) => (next) => (action) => {
         .then((response) => {
           // console.log(response.data);
           store.dispatch(foundUserDatas());
+          alert('Le jeu a bien été retiré de la liste !');
         })
         .catch((error) => {
           console.log(error);
