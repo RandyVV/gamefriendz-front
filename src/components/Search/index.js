@@ -54,19 +54,19 @@ function Search() {
     return (
       <div className="search">
         <div className="form-wrapper">
-          <form className="form" onSubmit={handleSubmit}>
-            <label htmlFor="floating_name" className="form-label">Jeux:
-              <input className="form-input" type="text" name="searchedGame" onChange={handleChange} />
+          <form className="search-form" onSubmit={handleSubmit}>
+            <label htmlFor="floating_name" className="search-form-label">Jeux:
+              <input className="search-form-input" type="text" name="searchedGame" onChange={handleChange} />
             </label>
-            <label htmlFor="platform_select" className="form-selector">Plateforme:
-              <select name="platform" className="form-platform" onChange={handleChange}>
-                <option className="form-options" value="">Choisis une plateforme</option>
+            <label htmlFor="platform_select" className="search-form-selector">Plateforme:
+              <select name="platform" className="search-form-platform" onChange={handleChange}>
+                <option className="search-form-options" value="">Choisis une plateforme</option>
                 {!platformLoading && (
-                  platforms.map((platform) => <option className="form-options" key={platform.id} value={platform.name}>{platform.name}</option>)
+                  platforms.map((platform) => <option className="search-form-options" key={platform.id} value={platform.name}>{platform.name}</option>)
                 )}
               </select>
             </label>
-            <button className="form-button" type="submit"> Rechercher </button>
+            <button className="search-form-button" type="submit"> Rechercher </button>
           </form>
         </div>
         {!gameLoading && (
@@ -81,12 +81,12 @@ function Search() {
   else if (route === '/players' && isLogged === true) {
     return (
       <div className="search">
-        <div className="form-wrapper">
-          <form className="form" onSubmit={handleSubmitPlayers}>
-            <label htmlFor="floating_name" className="form-label">Joueur:
-              <input className="form-input" type="text" name="searchedPlayer" onChange={handleChange} />
+        <div className="form-wrapper-players">
+          <form className="search-form" onSubmit={handleSubmitPlayers}>
+            <label htmlFor="floating_name" className="search-form-label">Joueur:
+              <input className="search-form-input" type="text" name="searchedPlayer" onChange={handleChange} />
             </label>
-            <button className="form-button" type="submit"> Rechercher </button>
+            <button className="search-form-button" type="submit"> Rechercher </button>
           </form>
         </div>
         {!loadingPlayers && (
