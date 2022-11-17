@@ -41,7 +41,9 @@ function reducer(state = initialState, action = {}) {
         ...state,
         pseudo: '',
         id: '',
+        role: '',
         token: '',
+        loading: true,
         isLogged: false,
       };
     case CONNECT_USER:
