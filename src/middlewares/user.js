@@ -26,9 +26,11 @@ const user = (store) => (next) => (action) => {
             response.data.data,
           ));
           store.dispatch(foundUserDatas());
+          alert('Connexion réussie !');
         })
         .catch((error) => {
           console.log(error);
+          alert('Identifiants incorrects');
         });
 
       next(action);
@@ -55,6 +57,7 @@ const user = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response.data.pseudo);
+          alert('Votre compte a bien été créé');
         })
         .catch((error) => {
           console.log(error);
