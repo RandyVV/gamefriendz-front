@@ -1,10 +1,12 @@
 import axios from 'axios';
 import {
+  AVAILABLE,
   connectUser,
   foundUserDatas,
   FOUND_USER_DATAS,
   loadDatas,
   LOGIN,
+  MODIFIER_PROFILE,
   SIGNUP,
 } from '../actions/user';
 
@@ -68,6 +70,63 @@ const user = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(loadDatas(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      next(action);
+      break;
+    }
+    case AVAILABLE: {
+      const { user: { currentUser: { available, id } } } = store.getState();
+      const { user: { token } } = store.getState();
+      axios.put(
+        `${URL}players/${id}/available`,
+        {
+          available: !available,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
+        .then((response) => {
+          store.dispatch(foundUserDatas());
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      next(action);
+      break;
+    }
+    case MODIFIER_PROFILE: {
+      const {
+        user: {
+          pseudo,
+          email,
+          discord,
+          currentUser: { id },
+        },
+      } = store.getState();
+      const { user: { token } } = store.getState();
+      axios.put(
+        `${URL}players/${id}`,
+        {
+          pseudo: pseudo,
+          email: email,
+          discord: discord,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      )
+        .then((response) => {
+          store.dispatch(foundUserDatas());
         })
         .catch((error) => {
           console.log(error);

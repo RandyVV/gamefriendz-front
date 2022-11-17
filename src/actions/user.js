@@ -51,3 +51,14 @@ export const SIGNUP = 'SIGNUP';
 export const signup = () => ({
   type: SIGNUP,
 });
+
+export const AVAILABLE = 'AVAILABLE';
+export const available = () => ({
+  type: AVAILABLE,
+});
+
+export const MODIFIER_PROFILE = 'MODIFIER_PROFILE';
+export const modifierProfile = () => ({
+  type: MODIFIER_PROFILE,
+});
+

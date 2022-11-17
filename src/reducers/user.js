@@ -9,6 +9,8 @@ import {
 
 const initialState = {
   email: '',
+  pseudo: '',
+  discord: '',
   password: '',
   currentUser: '',
   token: '',

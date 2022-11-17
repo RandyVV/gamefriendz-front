@@ -10,15 +10,17 @@ import {
   removeWantedGame,
 } from '../../actions/games';
 import Forbidden from '../Forbidden';
+import { available, changeFieldValue, modifierProfile } from '../../actions/user';
 
 // == Composant
 function Profile() {
   const currentUser = useSelector((state) => state.user.currentUser);
-  const route = window.location.pathname;
+  const isLogged = useSelector((state) => state.user.isLogged);
+  const { pseudo, email, discord } = useSelector((state) => state.user);
   const loading = useSelector((state) => state.players.loading);
   const player = useSelector((state) => state.players.searchedPlayerData);
+  const route = window.location.pathname;
   const dispatch = useDispatch();
-  const isLogged = useSelector((state) => state.user.isLogged);
 
   const handleOwnedSubmit = (event) => {
     event.preventDefault();
@@ -31,8 +33,20 @@ function Profile() {
   };
 
   const catchId = (event) => {
-    console.log(event.target.value);
     dispatch(catchGameId(event.target.value));
+  };
+
+  const handleChange = () => {
+    dispatch(available());
+  };
+
+  const handleChangeValue = (event) => {
+    dispatch(changeFieldValue(event.target.name, event.target.value));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(modifierProfile());
   };
 
   if (isLogged === false) {
@@ -47,16 +61,35 @@ function Profile() {
           <div className="profile-wrapper-bg"><img className="profile-img" src={avatar} alt="" /></div>
           <div className="profile-wrapper-info">
             <h1 className="profile-title">{currentUser.nickname}</h1>
-            <form className="profile-infos">
+            <form className="profile-infos" onSubmit={handleSubmit}>
+              <label>{!currentUser.available ? 'Disponible ? ' : 'Indisponible ? '}
+                <input className="profile-input" type="checkbox" checked={currentUser.available} onChange={handleChange} />
+              </label>
               <label htmlFor="floating_name" className="profile-label">Pseudo
-                <input className="profile-input" type="text" placeholder={currentUser.nickname} name="player" />
+                <input className="profile-input" type="text" placeholder={currentUser.nickname} name="pseudo" value={pseudo} onChange={handleChangeValue} />
               </label>
+              <label htmlFor="floating_name" className="profile-label">Email
+                <input className="profile-input" type="text" placeholder={currentUser.email} name="email" value={email} onChange={handleChangeValue} />
+              </label>
+              {/* A implémenter en V2
               <label htmlFor="floating_name" className="profile-label">Mot de passe
-                <input className="profile-input" type="password" placeholder="Mot de passe" name="player" />
-              </label>
+                <input
+                  className="profile-input"
+                  type="password"
+                  placeholder="Mot de passe"
+                  name="player"
+                />
+              </label> */}
               <label htmlFor="floating_name" className="profile-label">Discord Tag
-                <input className="profile-input" type="text" placeholder={currentUser.discord_tag} name="player" required />
+                <input className="profile-input" type="text" placeholder={currentUser.discord_tag} name="discord" value={discord} onChange={handleChangeValue} />
               </label>
+              <button
+                type="submit"
+                className="mt-10 py-2 px-3 text-base font-medium text-white bg-primary rounded-lg hover:bg-altprimary focus:ring-2 focus:outline-none focus:ring-lightblue"
+                // onClick={handleSubmit}
+              >
+                Modifier
+              </button>
             </form>
             <div className="profile-games">
               <div className="profile-games-wrapper">
