@@ -19,7 +19,7 @@ function Card({
       </a>
       <div className="flex flex-col p-5 justify-between h-40">
         <a href="#">
-          <h5 className="mb-2 text-2xl text-white font-bold tracking-tight">{title}</h5>
+          <h5 className="mb-2 text-2xl text-lightblue text-center font-bold tracking-tight">{title}</h5>
         </a>
         <p className="mb-3 font-normal truncate overflow-hidden text-white">{description}</p>
         <div className="flex flex-row items-center justify-between">
