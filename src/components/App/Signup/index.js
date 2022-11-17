@@ -25,7 +25,7 @@ function Signup() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
-      alert("The passwords doesn't match");
+      alert("Les mots de passe ne sont pas identiques");
       return false; // The form won't submit
     }
     else {
