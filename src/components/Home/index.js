@@ -36,6 +36,7 @@ function Home() {
   // <img className="home-bg" src={homebg} alt="" />
 
   const results = filteredGames(loading, games);
+  console.log(results);
 
   return (
     <div className="home">
