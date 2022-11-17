@@ -15,13 +15,16 @@ const user = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
       const { user: { email, password } } = store.getState();
-
       axios.post(`${URL}login`, {
         username: email,
         password: password,
       })
         .then((response) => {
-          store.dispatch(connectUser(response.data.token, response.data.data));
+          store.dispatch(connectUser(
+            response.data.data.roles,
+            response.data.token,
+            response.data.data,
+          ));
           store.dispatch(foundUserDatas());
         })
         .catch((error) => {

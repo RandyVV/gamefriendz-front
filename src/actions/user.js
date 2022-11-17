@@ -16,8 +16,9 @@ export const login = () => ({
 });
 
 export const CONNECT_USER = 'CONNECT_USER';
-export const connectUser = (token, currentUser) => ({
+export const connectUser = (role, token, currentUser) => ({
   type: CONNECT_USER,
+  role,
   token,
   currentUser,
 });
@@ -61,4 +62,3 @@ export const MODIFIER_PROFILE = 'MODIFIER_PROFILE';
 export const modifierProfile = () => ({
   type: MODIFIER_PROFILE,
 });
-
