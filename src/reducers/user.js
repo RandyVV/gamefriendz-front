@@ -13,6 +13,7 @@ const initialState = {
   discord: '',
   password: '',
   currentUser: '',
+  role: '',
   token: '',
   loading: true,
   isLogged: false,
@@ -49,6 +50,7 @@ function reducer(state = initialState, action = {}) {
         email: '',
         password: '',
         token: action.token,
+        role: action.role,
         currentUser: action.currentUser,
         isLogged: true,
       };

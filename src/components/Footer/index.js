@@ -1,10 +1,31 @@
 // == Import
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import logo from 'src/assets/images/LogoManette.png';
 import './footer.scss';
 
 // == Composant
 function Footer() {
+  const userRoles = useSelector((state) => state.user.role);
+  const loading = useSelector((state) => state.user.loading);
+
+  // eslint-disable-next-line consistent-return
+  function findAdmin(roles, dataLoading) {
+    if (dataLoading === false) {
+      const admin = roles.find((role) => role === 'ROLE_ADMIN');
+      return admin;
+    }
+  }
+
+  function findAdminToBool(admin) {
+    if (admin === 'ROLE_ADMIN') {
+      return true;
+    }
+    return false;
+  }
+
+  const userAdmin = findAdminToBool(findAdmin(userRoles, loading));
+  console.log(userAdmin);
   return (
     <footer className="p-4 z-10 bg-darkbg sm:p-6">
       <div className="md:flex md:justify-between">
@@ -51,7 +72,7 @@ function Footer() {
       <div className="sm:flex sm:items-center sm:justify-between">
         <span className="text-sm text-white sm:text-center">© 2022 <Link to="/" className="hover:underline hover:text-primary">Game FriendZ™</Link>. Tous droits réservés.
         </span>
-        <div className="menu-back">
+        <div className={userAdmin ? 'menu-back' : 'menu-back hidden'}>
           <span className="text-sm text-white sm:text-center hover:underline hover:text-primary"><a href="http://randyvv-server.eddi.cloud/backoffice">Vers le Back-Office</a></span>
         </div>
         <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
