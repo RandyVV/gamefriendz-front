@@ -1,0 +1,8 @@
+@use 'src/styles/vars';
+
+.forbidden {
+  &-img {
+    max-height: 700px;
+  }
+
+}

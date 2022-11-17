@@ -14,7 +14,7 @@ import {
   fetchPlayers,
   searchPlayer,
 } from '../../actions/players';
-import ErrorPage from '../ErrorPage';
+import Forbidden from '../Forbidden';
 
 // == Composant
 function Search() {
@@ -70,7 +70,7 @@ function Search() {
           </form>
         </div>
         {!gameLoading && (
-        <div className="home-cards">
+        <div className="game-cards">
           {games.map((game) => <Card key={game.id} {...game} />)}
         </div>
         )}
@@ -100,7 +100,7 @@ function Search() {
   // eslint-disable-next-line no-else-return
   else if (route === '/players' && isLogged === false) {
     return (
-      <ErrorPage />
+      <Forbidden />
     );
   }
 }

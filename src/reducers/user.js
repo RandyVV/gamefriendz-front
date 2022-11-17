@@ -6,12 +6,11 @@ import {
   CHANGE_SIGNUP_FIELD_VALUE,
   LOAD_DATAS,
 } from '../actions/user';
-import userDatas from '../datas/userDatas';
 
 const initialState = {
   email: '',
   password: '',
-  currentUser: userDatas,
+  currentUser: '',
   token: '',
   loading: true,
   isLogged: false,

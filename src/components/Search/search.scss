@@ -79,6 +79,12 @@
   }
 }
 
+.game-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .player-cards {
   display: flex;
   flex-wrap: wrap;

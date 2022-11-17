@@ -9,7 +9,7 @@ import {
   removeGame,
   removeWantedGame,
 } from '../../actions/games';
-import ErrorPage from '../ErrorPage';
+import Forbidden from '../Forbidden';
 
 // == Composant
 function Profile() {
@@ -37,7 +37,7 @@ function Profile() {
 
   if (isLogged === false) {
     return (
-      <ErrorPage />
+      <Forbidden />
     );
   }
   if (route === '/profile') {
@@ -90,10 +90,22 @@ function Profile() {
             <h1 className="profile-title">{player.nickname}</h1>
             <h2 className="profile-subtitle">{player.discord_tag}</h2>
             <div className="profile-games">
-              <h2 className="profile-subtitle">Mes jeux</h2>
-              <ul className="players-list">
-                {player.owned_games.map((owned_game) => <li className="profile-item">{owned_game.game.title} - {owned_game.platform.name}</li>)}
-              </ul>
+              <div className="profile-games-wrapper">
+                <h2 className="profile-subtitle">Mes jeux</h2>
+                {!loading && (
+                <ul className="profile-list">
+                  {currentUser.owned_games.map((owned_game) => <li className="profile-item" key={owned_game.id}>{owned_game.game.title} - {owned_game.platform.name}</li>)}
+                </ul>
+                )}
+              </div>
+              <div className="profile-games-wrappertwo">
+                <h2 className="profile-subtitle">Mes envies</h2>
+                {!loading && (
+                <ul className="profile-list">
+                  {currentUser.wants_to_play.map((want_to_play) => <li className="profile-item" key={want_to_play.id}>{want_to_play.game.title} - {want_to_play.platform.name}</li>)}
+                </ul>
+                )}
+              </div>
             </div>
           </div>
         </div>
