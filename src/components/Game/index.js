@@ -69,25 +69,25 @@ function Game() {
         </a>
         <div className="p-5">
           <a href="#">
-            <h5 className="mb-2 text-2xl text-white font-bold tracking-tight flex justify-center">{game.title}</h5>
+            <h5 className="mb-2 text-2xl text-lightblue font-bold tracking-tight flex justify-center">{game.title}</h5>
           </a>
           <p className="mb-3 font-normal text-lg text-white">{game.description}</p>
           <div className="releases">
             <div className="releases-platform">
-              <p className="mb-3 font-normal text-xl text-white">Disponible sur :</p>
+              <p className="mb-3 font-normal text-xl text-lightblue">Disponible sur :</p>
               <ul className="text-primary">
-                {game.releases.map((release) => <li><p className="mb-3 font-normal text-lg text-lightblue" key={release.platform.id}>{release.platform.name}</p></li>)}
+                {game.releases.map((release) => <li><p className="mb-3 font-normal text-lg text-white" key={release.platform.id}>{release.platform.name}</p></li>)}
               </ul>
             </div>
             <div className="releases-dates">
-              <p className="mb-3 font-normal text-xl text-white">Date de sortie :</p>
+              <p className="mb-3 font-normal text-xl text-lightblue">Date de sortie :</p>
               <ul className="text-primary">
-                {game.releases.map((release) => <li><p className="mb-3 font-normal text-lg text-lightblue" key={release.id}>{release.release_date.substring(0, 10)}</p></li>)}
+                {game.releases.map((release) => <li><p className="mb-3 font-normal text-lg text-white" key={release.id}>{release.release_date.substring(0, 10)}</p></li>)}
               </ul>
             </div>
             <div className="releases-multi">
-              <p className="mb-3 font-normal text-xl text-white">Multijoueurs :</p>
-              <p className="mb-3 font-normal text-lg text-lightblue">{game.has_multiplayer_mode ? 'Oui' : 'Non'}</p>
+              <p className="mb-3 font-normal text-xl text-lightblue">Multijoueurs :</p>
+              <p className="mb-3 font-normal text-lg text-white">{game.has_multiplayer_mode ? 'Oui' : 'Non'}</p>
             </div>
             <div className="add-game-form">
               <form className="add-form" onSubmit={handleSubmit}>
