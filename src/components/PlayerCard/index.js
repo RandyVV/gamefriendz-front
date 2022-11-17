@@ -26,8 +26,6 @@ function PlayerCard({
     }, 500);
   };
 
-  console.log(available);
-
   return (
     <div className="playercard">
       <div className="playercard-wrapper">
@@ -51,6 +49,7 @@ function PlayerCard({
 
 PlayerCard.propTypes = {
   // picture: PropTypes.string.isRequired,
+  available: PropTypes.bool.isRequired,
   nickname: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   discord_tag: PropTypes.string.isRequired,
