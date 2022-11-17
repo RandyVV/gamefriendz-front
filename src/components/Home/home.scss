@@ -25,6 +25,7 @@
     background-color: vars.$bg-dark-color;
     font-family: vars.$global-font;
     color: vars.$primary-color;
+    text-shadow: 0 0 20px vars.$light-primary-color;
   }
 
   &-platform {
@@ -38,6 +39,7 @@
     text-align: center;
     font-size: 1.5em;
     padding: 0.5em 0;
+    text-shadow: 0 0 20px vars.$third-color;
 
     &-title {
       font-size: 1.5em;
