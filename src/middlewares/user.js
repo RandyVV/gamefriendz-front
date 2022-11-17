@@ -49,7 +49,7 @@ const user = (store) => (next) => (action) => {
         password: password,
       })
         .then((response) => {
-          // console.log(response.data.pseudo);
+          console.log(response.data.pseudo);
         })
         .catch((error) => {
           console.log(error);
