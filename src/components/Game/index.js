@@ -93,8 +93,8 @@ function Game() {
               <form className="add-form" onSubmit={handleSubmit}>
                 <label htmlFor="platform_select" className="add-form_selector">Plateforme:
                   <select name="gameIdToAdd" className="add-form_selector__platform" onChange={handleSelect}>
-                    <option className="form-options" value="">Choisis une plateforme</option>
-                    {currentReleases.map((release) => <option className="form-options" value={release.id}>{release.platform.name}</option>)}
+                    <option className="game-form-options" value="">Choisis une plateforme</option>
+                    {currentReleases.map((release) => <option className="game-form-options" value={release.id}>{release.platform.name}</option>)}
                   </select>
                 </label>
                 <div className="buttons">
