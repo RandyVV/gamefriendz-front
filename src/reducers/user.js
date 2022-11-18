@@ -1,22 +1,31 @@
 import {
   TOGGLE_LOGIN_FORM,
-  LOGOUT,
+  UNLOAD_DATA,
   CONNECT_USER,
   CHANGE_FIELD_VALUE,
   CHANGE_SIGNUP_FIELD_VALUE,
   LOAD_DATAS,
 } from '../actions/user';
 
+const initCurrentUser = () => {
+  const localUserRawData = localStorage.getItem('USER_DATA');
+  if (localUserRawData) {
+    return JSON.parse(localUserRawData);
+  }
+  return null;
+};
+
+const currentUser = initCurrentUser();
+
 const initialState = {
   email: '',
   pseudo: '',
   discord: '',
   password: '',
-  currentUser: '',
+  currentUser,
   role: '',
-  token: '',
-  loading: true,
-  isLogged: false,
+  loading: (currentUser == null),
+  isLogged: (currentUser != null),
   isOpen: false,
   signup: [
     {
@@ -36,13 +45,11 @@ function reducer(state = initialState, action = {}) {
         ...state,
         isOpen: !state.isOpen,
       };
-    case LOGOUT:
+    case UNLOAD_DATA:
       return {
         ...state,
-        pseudo: '',
-        id: '',
+        currentUser: '',
         role: '',
-        token: '',
         loading: true,
         isLogged: false,
       };
@@ -51,7 +58,6 @@ function reducer(state = initialState, action = {}) {
         ...state,
         email: '',
         password: '',
-        token: action.token,
         role: action.role,
         currentUser: action.currentUser,
         isLogged: true,

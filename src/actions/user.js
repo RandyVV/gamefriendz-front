@@ -16,10 +16,8 @@ export const login = () => ({
 });
 
 export const CONNECT_USER = 'CONNECT_USER';
-export const connectUser = (role, token, currentUser) => ({
+export const connectUser = (currentUser) => ({
   type: CONNECT_USER,
-  role,
-  token,
   currentUser,
 });
 
@@ -37,6 +35,11 @@ export const loadDatas = (userDatas) => ({
 export const LOGOUT = 'LOGOUT';
 export const logout = () => ({
   type: LOGOUT,
+});
+
+export const UNLOAD_DATA = 'UNLOAD_DATA';
+export const unloadData = () => ({
+  type: UNLOAD_DATA,
 });
 
 // partie inscription

@@ -9,6 +9,7 @@ import { toggleMenu } from '../../actions/games';
 // == Composant
 function Header() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isLogged = useSelector((state) => state.user.isLogged);
   const isMenuOpen = useSelector((state) => state.games.isMenuOpen);
 
@@ -20,14 +21,13 @@ function Header() {
     dispatch(toggleMenu());
   };
 
-  const navigate = useNavigate();
-
   const navigateToSignup = () => {
     navigate('/signup');
   };
 
   const handleLogout = () => {
     dispatch(logout());
+    navigate('/');
   };
 
   return (

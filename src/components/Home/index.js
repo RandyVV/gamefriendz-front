@@ -59,7 +59,7 @@ function Home() {
             <div className="home-discord">
               <img className="w-13 h-13" src={discordpic} alt="logo discord" />
             </div>
-            <p className="home-join">Rejoins-nous sur Discord</p>
+            <a href="*" className="home-join">Rejoins-nous sur Discord</a>
             {/* </div> */}
             <div className="home-bg" />
           </div>

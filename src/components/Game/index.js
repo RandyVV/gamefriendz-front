@@ -4,11 +4,12 @@
 // == Import
 // import PropTypes from 'prop-types';
 import './game.scss';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   changeSelectValue,
+  fetchGame,
   addGame,
   addWantedGame,
 } from '../../actions/games';
@@ -22,18 +23,26 @@ function Game() {
   const addToOwnedGamesRef = useRef(null);
   const addToWantsToPlayRef = useRef(null);
 
-  /**
- *  on trouve le jeu voulu dans la liste des jeux
- * @param {Array} games - tous les jeux
- * @param {string} searchedId - l'ID du jeu recherché
- * @return {Object} - Le jeu trouvé
- */
+  const game = useSelector((state) => {
+    const allGames = state?.games?.allGames;
+    if (allGames) {
+      return allGames.find((storedGame) => (storedGame.id === intId));
+    }
+    return null;
+  });
 
-  function findGame(games, searchedId) {
-    const game = games.find((testedGame) => {
-      return testedGame.id === searchedId;
-    });
-    return game;
+  useEffect(() => {
+    if (!game) {
+      dispatch(fetchGame(intId));
+    }
+  }, []);
+
+  if (!game) {
+    return (
+      <div className="game">
+        Loading...
+      </div>
+    );
   }
 
   const handleSubmit = (event) => {
@@ -54,7 +63,6 @@ function Game() {
     dispatch(changeSelectValue(event.target.name, event.target.value));
   };
 
-  const game = useSelector((state) => findGame(state.games.allGames, intId));
   const currentReleases = game.releases;
   return (
     <div className="game">
@@ -71,13 +79,13 @@ function Game() {
             <div className="releases-platform">
               <p className="mb-3 font-normal text-xl text-lightblue">Disponible sur :</p>
               <ul className="text-primary">
-                {game.releases.map((release) => <li><p className="mb-3 font-normal text-lg text-white" key={release.platform.id}>{release.platform.name}</p></li>)}
+                {game.releases.map((release) => <li key={`${release.id}-platform`}><p className="mb-3 font-normal text-lg text-white">{release.platform.name}</p></li>)}
               </ul>
             </div>
             <div className="releases-dates">
               <p className="mb-3 font-normal text-xl text-lightblue">Date de sortie :</p>
               <ul className="text-primary">
-                {game.releases.map((release) => <li><p className="mb-3 font-normal text-lg text-white" key={release.id}>{release.release_date.substring(0, 10)}</p></li>)}
+                {game.releases.map((release) => <li key={`${release.id}-date`}><p className="mb-3 font-normal text-lg text-white">{release.release_date.substring(0, 10)}</p></li>)}
               </ul>
             </div>
             <div className="releases-multi">
@@ -89,7 +97,7 @@ function Game() {
                 <label htmlFor="platform_select" className="add-form_selector">Plateforme:
                   <select name="gameIdToAdd" className="add-form_selector__platform" onChange={handleSelect}>
                     <option className="game-form-options" value="">Choisis une plateforme</option>
-                    {currentReleases.map((release) => <option className="game-form-options" value={release.id}>{release.platform.name}</option>)}
+                    {currentReleases.map((release) => <option className="game-form-options" key={`${release.id}-platform-option`} value={release.id}>{release.platform.name}</option>)}
                   </select>
                 </label>
                 <div className="buttons">
