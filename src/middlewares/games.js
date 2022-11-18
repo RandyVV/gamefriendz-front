@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
   FETCH_GAMES,
+  FETCH_GAME,
   SEARCH_GAME,
   saveGames,
   savePlatform,
@@ -19,6 +20,19 @@ const games = (store) => (next) => (action) => {
       axios.get(`${URL}games`)
         .then((response) => {
           store.dispatch(saveGames(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      next(action);
+      break;
+    }
+    case FETCH_GAME: {
+      const { gameId } = action;
+      axios.get(`${URL}games/${gameId}`)
+        .then((response) => {
+          store.dispatch(saveGames([response.data]));
         })
         .catch((error) => {
           console.log(error);
@@ -58,9 +72,9 @@ const games = (store) => (next) => (action) => {
 
     // Owned Games
     case ADD_GAME: {
+      const token = localStorage.getItem('USER_TOKEN');
       const { games: { gameIdToAdd } } = store.getState();
       const { user: { currentUser: { id } } } = store.getState();
-      const { user: { token } } = store.getState();
       axios.post(
         `${URL}players/${id}/ownedgames`,
         {
@@ -84,9 +98,9 @@ const games = (store) => (next) => (action) => {
       break;
     }
     case REMOVE_GAME: {
+      const token = localStorage.getItem('USER_TOKEN');
       const { games: { gameIdToRemove } } = store.getState();
       const { user: { currentUser: { id } } } = store.getState();
-      const { user: { token } } = store.getState();
       console.log(gameIdToRemove);
       axios.delete(
         `${URL}players/${id}/ownedgames`,
@@ -116,7 +130,7 @@ const games = (store) => (next) => (action) => {
     case ADD_WANTED_GAME: {
       const { games: { gameIdToAdd } } = store.getState();
       const { user: { currentUser: { id } } } = store.getState();
-      const { user: { token } } = store.getState();
+      const token = localStorage.getItem('USER_TOKEN');
       axios.post(
         `${URL}players/${id}/wantstoplay`,
         {
@@ -142,7 +156,7 @@ const games = (store) => (next) => (action) => {
     case REMOVE_WANTED_GAME: {
       const { games: { gameIdToRemove } } = store.getState();
       const { user: { currentUser: { id } } } = store.getState();
-      const { user: { token } } = store.getState();
+      const token = localStorage.getItem('USER_TOKEN');
       console.log(gameIdToRemove);
       axios.delete(
         `${URL}players/${id}/wantstoplay`,
@@ -155,7 +169,7 @@ const games = (store) => (next) => (action) => {
           },
         },
       )
-        .then((response) => {
+        .then(() => {
           // console.log(response.data);
           store.dispatch(foundUserDatas());
           alert('Le jeu a bien été retiré de la liste !');

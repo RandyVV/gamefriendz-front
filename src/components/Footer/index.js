@@ -6,13 +6,14 @@ import './footer.scss';
 
 // == Composant
 function Footer() {
-  const userRoles = useSelector((state) => state.user.role);
+  const currentUser = useSelector((state) => state.user.currentUser);
+  // const userRoles = useSelector((state) => state.user.currentUser.roles);
   const loading = useSelector((state) => state.user.loading);
 
   // eslint-disable-next-line consistent-return
-  function findAdmin(roles, dataLoading) {
-    if (dataLoading === false) {
-      const admin = roles.find((role) => role === 'ROLE_ADMIN');
+  function findAdmin(user, dataLoading) {
+    if (dataLoading === false && user) {
+      const admin = user.roles.find((role) => role === 'ROLE_ADMIN');
       return admin;
     }
   }
@@ -24,7 +25,7 @@ function Footer() {
     return false;
   }
 
-  const userAdmin = findAdminToBool(findAdmin(userRoles, loading));
+  const userAdmin = findAdminToBool(findAdmin(currentUser, loading));
   return (
     <footer className="p-4 z-10 bg-darkbg sm:p-6">
       <div className="md:flex md:justify-between">

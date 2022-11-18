@@ -54,6 +54,12 @@ export const fetchGames = () => ({
   type: FETCH_GAMES,
 });
 
+export const FETCH_GAME = 'FETCH_GAME';
+export const fetchGame = (gameId) => ({
+  type: FETCH_GAME,
+  gameId
+});
+
 export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const changeValue = (field, value) => ({
   type: CHANGE_VALUE,

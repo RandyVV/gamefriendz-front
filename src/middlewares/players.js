@@ -24,7 +24,7 @@ const players = (store) => (next) => (action) => {
     }
     case SEARCH_PLAYER: {
       const { players: { searchedPlayer } } = store.getState();
-      const { user: { token } } = store.getState();
+      const token = localStorage.getItem('USER_TOKEN');
       axios.post(
         `${URL}players/search`,
         {
@@ -48,7 +48,8 @@ const players = (store) => (next) => (action) => {
     }
     case FETCH_PLAYER_DATA: {
       const { players: { searchedPlayerId } } = store.getState();
-      const { user: { token } } = store.getState();
+      const token = localStorage.getItem('USER_TOKEN');
+
       axios.get(`${URL}players/${searchedPlayerId}`, {
         headers: {
           Authorization: `bearer ${token}`,

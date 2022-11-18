@@ -5,7 +5,9 @@ import {
   foundUserDatas,
   FOUND_USER_DATAS,
   loadDatas,
+  unloadData,
   LOGIN,
+  LOGOUT,
   MODIFIER_PROFILE,
   SIGNUP,
 } from '../actions/user';
@@ -20,9 +22,8 @@ const user = (store) => (next) => (action) => {
         password: password,
       })
         .then((response) => {
+          localStorage.setItem('USER_TOKEN', response.data.token);
           store.dispatch(connectUser(
-            response.data.data.roles,
-            response.data.token,
             response.data.data,
           ));
           store.dispatch(foundUserDatas());
@@ -34,6 +35,12 @@ const user = (store) => (next) => (action) => {
         });
 
       next(action);
+      break;
+    }
+    case LOGOUT: {
+      localStorage.removeItem('USER_TOKEN');
+      localStorage.removeItem('USER_DATA');
+      store.dispatch(unloadData());
       break;
     }
     case SIGNUP: {
@@ -67,15 +74,17 @@ const user = (store) => (next) => (action) => {
       break;
     }
     case FOUND_USER_DATAS: {
-      const { user: { currentUser: { id } } } = store.getState();
-      const { user: { token } } = store.getState();
+      const { user: { currentUser: { id, roles } } } = store.getState();
+      const token = localStorage.getItem('USER_TOKEN');
       axios.get(`${URL}players/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
         .then((response) => {
-          store.dispatch(loadDatas(response.data));
+          const currentUser = { ...response.data, roles };
+          localStorage.setItem('USER_DATA', JSON.stringify(currentUser));
+          store.dispatch(loadDatas(currentUser));
         })
         .catch((error) => {
           console.log(error);
@@ -86,7 +95,7 @@ const user = (store) => (next) => (action) => {
     }
     case AVAILABLE: {
       const { user: { currentUser: { available, id } } } = store.getState();
-      const { user: { token } } = store.getState();
+      const token = localStorage.getItem('USER_TOKEN');
       axios.put(
         `${URL}players/${id}/available`,
         {
@@ -98,7 +107,7 @@ const user = (store) => (next) => (action) => {
           },
         },
       )
-        .then((response) => {
+        .then(() => {
           store.dispatch(foundUserDatas());
         })
         .catch((error) => {
@@ -112,26 +121,32 @@ const user = (store) => (next) => (action) => {
       const {
         user: {
           pseudo,
-          email,
           discord,
           currentUser: { id },
         },
       } = store.getState();
-      const { user: { token } } = store.getState();
+      const token = localStorage.getItem('USER_TOKEN');
+
+      const requestData = {};
+
+      if (pseudo) {
+        requestData.nickname = pseudo;
+      }
+
+      if (discord) {
+        requestData.discord_tag = discord;
+      }
+
       axios.put(
         `${URL}players/${id}`,
-        {
-          pseudo: pseudo,
-          email: email,
-          discord: discord,
-        },
+        requestData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         },
       )
-        .then((response) => {
+        .then(() => {
           store.dispatch(foundUserDatas());
         })
         .catch((error) => {
