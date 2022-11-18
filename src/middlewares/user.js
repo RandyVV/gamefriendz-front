@@ -137,7 +137,7 @@ const user = (store) => (next) => (action) => {
         requestData.discord_tag = discord;
       }
 
-      axios.put(
+      axios.patch(
         `${URL}players/${id}`,
         requestData,
         {
