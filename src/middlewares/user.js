@@ -13,7 +13,7 @@ import {
 } from '../actions/user';
 
 const user = (store) => (next) => (action) => {
-  const URL = 'http://randyvv-server.eddi.cloud/api/';
+  const URL = 'https://randyvv-server.eddi.cloud/api/';
   switch (action.type) {
     case LOGIN: {
       const { user: { email, password } } = store.getState();
