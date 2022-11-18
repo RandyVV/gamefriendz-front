@@ -102,12 +102,12 @@ function Game() {
                 </label>
                 <div className="buttons">
                   <div className="flex flex-row-reverse">
-                    <button ref={addToOwnedGamesRef} name="owned" className="sm:mr-2 sm:py-2 sm:px-3 sm:text-base sm:font-medium sm:text-white sm:bg-primary sm:rounded-lg sm:hover:bg-altprimary max-[640px]:hidden" type="submit">
+                    <button ref={addToOwnedGamesRef} name="owned" className="mr-2 py-2 px-3 text-base font-medium text-white bg-primary rounded-lg hover:bg-altprimary" type="submit">
                       Ajouter à mes Jeux
                     </button>
                   </div>
                   <div className="flex flex-row-reverse">
-                    <button ref={addToWantsToPlayRef} name="want" className="sm:mr-2 sm:py-2 sm:px-3 sm:text-base sm:font-medium sm:text-white sm:bg-primary sm:rounded-lg sm:hover:bg-altprimary max-[640px]:hidden" type="submit">
+                    <button ref={addToWantsToPlayRef} name="want" className="mr-2 py-2 px-3 text-base font-medium text-white bg-primary rounded-lg hover:bg-altprimary" type="submit">
                       Ajouter à mes Envies
                     </button>
                   </div>
