@@ -98,7 +98,7 @@ const user = (store) => (next) => (action) => {
           },
         },
       )
-        .then((response) => {
+        .then(() => {
           store.dispatch(foundUserDatas());
         })
         .catch((error) => {
@@ -112,26 +112,32 @@ const user = (store) => (next) => (action) => {
       const {
         user: {
           pseudo,
-          email,
           discord,
+          token,
           currentUser: { id },
         },
       } = store.getState();
-      const { user: { token } } = store.getState();
+
+      const requestData = {};
+
+      if (pseudo) {
+        requestData.nickname = pseudo;
+      }
+
+      if (discord) {
+        requestData.discord_tag = discord;
+      }
+
       axios.put(
         `${URL}players/${id}`,
-        {
-          pseudo: pseudo,
-          email: email,
-          discord: discord,
-        },
+        requestData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         },
       )
-        .then((response) => {
+        .then(() => {
           store.dispatch(foundUserDatas());
         })
         .catch((error) => {

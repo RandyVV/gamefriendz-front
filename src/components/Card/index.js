@@ -1,14 +1,8 @@
 // == Import
 import PropTypes from 'prop-types';
-import './card.scss';
-import windowspic from 'src/assets/images/platform/windows.png';
-import android from 'src/assets/images/platform/android.png';
-import ps4 from 'src/assets/images/platform/ps4.png';
-import xboxseries from 'src/assets/images/platform/xbox-series.png';
-import ps5 from 'src/assets/images/platform/ps5.png';
-import nintendo from 'src/assets/images/platform/switch.png';
-import xboxone from 'src/assets/images/platform/xbox-one.png';
 import { Link } from 'react-router-dom';
+import './card.scss';
+import icons from '../../selectors/games';
 
 // == Composant
 function Card({
@@ -16,6 +10,7 @@ function Card({
   title,
   id,
   description,
+  releases,
 }) {
   return (
 
@@ -30,13 +25,7 @@ function Card({
         <p className="mb-3 font-normal truncate overflow-hidden text-white">{description}</p>
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row">
-            <img className="w-7 h-7 mr-1.5" src={windowspic} alt="" />
-            <img className="w-7 h-7 mr-1.5" src={ps4} alt="" />
-            <img className="w-7 h-7 mr-1.5" src={xboxseries} alt="" />
-            <img className="w-7 h-7 mr-1.5" src={ps5} alt="" />
-            <img className="w-7 h-7 mr-1.5" src={nintendo} alt="" />
-            <img className="w-7 h-7 mr-1.5" src={android} alt="" />
-            <img className="w-7 h-7 mr-1.5" src={xboxone} alt="" />
+            {releases.map((release) => <img className="w-7 h-7 mr-1.5" src={icons[release.platform.slug]} key={release.platform.id} alt={`${title} ${release.platform.name}`} title={release.platform.name} />)}
           </div>
           <div className="flex flex-row-reverse">
             <Link to={`/game/${id}`} className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-altprimary focus:ring-2 focus:outline-none focus:ring-lightblue">
@@ -56,6 +45,7 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
+  releases: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 // == Export

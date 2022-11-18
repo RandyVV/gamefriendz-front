@@ -28,7 +28,7 @@ function Home() {
   // eslint-disable-next-line consistent-return
   function filteredGames(status, loadedGames) {
     if (status === false) {
-      const results = loadedGames.filter((loadedGame) => loadedGame.id <= 15);
+      const results = loadedGames.filter((loadedGame) => loadedGame.id <= 16);
       return results;
     }
   }
@@ -36,7 +36,6 @@ function Home() {
   // <img className="home-bg" src={homebg} alt="" />
 
   const results = filteredGames(loading, games);
-  console.log(results);
 
   return (
     <div className="home">

@@ -5,7 +5,7 @@
 // import PropTypes from 'prop-types';
 import './game.scss';
 import { useRef } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   changeSelectValue,
@@ -15,11 +15,6 @@ import {
 
 // == Composant
 function Game() {
-  // picture,
-  // title,
-  // description,
-  // has_multiplayer_mode,
-  // releases,
   const dispatch = useDispatch();
   const { id } = useParams();
   const intId = parseInt(id, 10);
@@ -117,25 +112,6 @@ function Game() {
     </div>
   );
 }
-
-/* Game.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  has_multiplayer_mode: PropTypes.bool.isRequired,
-  releases: PropTypes.arrayOf(
-    PropTypes.shape({
-      release_date: PropTypes.string.isRequired,
-      platform: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          name: PropTypes.string.isRequired,
-        }).isRequired,
-      ).isRequired,
-    }).isRequired,
-  ).isRequired,
-};  */
 
 // == Export
 export default Game;

@@ -16,7 +16,7 @@ import { available, changeFieldValue, modifierProfile } from '../../actions/user
 function Profile() {
   const currentUser = useSelector((state) => state.user.currentUser);
   const isLogged = useSelector((state) => state.user.isLogged);
-  const { pseudo, email, discord } = useSelector((state) => state.user);
+  const { pseudo, discord } = useSelector((state) => state.user);
   const loading = useSelector((state) => state.players.loading);
   const player = useSelector((state) => state.players.searchedPlayerData);
   const route = window.location.pathname;
@@ -68,25 +68,13 @@ function Profile() {
               <label htmlFor="floating_name" className="profile-label">Pseudo
                 <input className="profile-input" type="text" placeholder={currentUser.nickname} name="pseudo" value={pseudo} onChange={handleChangeValue} />
               </label>
-              <label htmlFor="floating_name" className="profile-label">Email
-                <input className="profile-input" type="text" placeholder={currentUser.email} name="email" value={email} onChange={handleChangeValue} />
-              </label>
-              {/* A implémenter en V2
-              <label htmlFor="floating_name" className="profile-label">Mot de passe
-                <input
-                  className="profile-input"
-                  type="password"
-                  placeholder="Mot de passe"
-                  name="player"
-                />
-              </label> */}
               <label htmlFor="floating_name" className="profile-label">Discord Tag
                 <input className="profile-input" type="text" placeholder={currentUser.discord_tag} name="discord" value={discord} onChange={handleChangeValue} />
               </label>
               <button
                 type="submit"
                 className="mt-10 py-2 px-3 text-base font-medium text-white bg-primary rounded-lg hover:bg-altprimary focus:ring-2 focus:outline-none focus:ring-lightblue"
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
               >
                 Modifier
               </button>
