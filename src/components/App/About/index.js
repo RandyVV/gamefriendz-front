@@ -33,7 +33,7 @@ function About() {
         <div className="flex flex-col md:items-center pb-10">
           <img className="mb-3 w-24 h-24 rounded-full shadow-lg" src={avatarFemme} alt="Célia" />
           <h5 className="mb-1 text-xl font-medium text-gray-900 ">Célia</h5>
-          <span className="text-sm text-gray-500 italic">Dev Front</span>
+          <span className="text-sm text-gray-500 italic">Git Master</span>
         </div>
       </div>
       <p className="text-xl m-20 text-center">"En tant que passionnés de jeux vidéos sur toutes plateformes, notre objectif était clair: créer une application permettant de fusionner toutes les communautés en une, et vous permettre de trouver des coéquipiers sur n'importe quel jeu et n'importe quelle plateforme !"</p>
