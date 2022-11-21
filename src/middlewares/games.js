@@ -160,7 +160,7 @@ const games = (store) => (next) => (action) => {
       const { games: { gameIdToRemove } } = store.getState();
       const { user: { currentUser: { id } } } = store.getState();
       const token = localStorage.getItem('USER_TOKEN');
-      console.log(gameIdToRemove);
+      // console.log(gameIdToRemove);
       axios.delete(
         `${URL}players/${id}/wantstoplay`,
         {

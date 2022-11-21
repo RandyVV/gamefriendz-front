@@ -16,7 +16,7 @@ const players = (store) => (next) => (action) => {
           store.dispatch(savePlayers(response.data));
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
 
       next(action);
@@ -42,7 +42,7 @@ const players = (store) => (next) => (action) => {
           store.dispatch(savePlayers(response.data));
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
 
       next(action);
@@ -61,7 +61,7 @@ const players = (store) => (next) => (action) => {
           store.dispatch(savePlayerData(response.data));
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
 
       next(action);

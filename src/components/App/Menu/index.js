@@ -55,7 +55,7 @@ function Menu() {
           end
           to="/players"
         >
-          Recherche de Joueur
+          Recherche de Joueurs
         </NavLink>
         )}
 

@@ -49,12 +49,12 @@ function Game() {
     event.preventDefault();
     if (event.nativeEvent.submitter === addToOwnedGamesRef.current) {
       // on ajoute à ownedgames
-      console.log('owned games');
+      // console.log('owned games');
       dispatch(addGame());
     }
     else if (event.nativeEvent.submitter === addToWantsToPlayRef.current) {
       // on ajoute à wantstoplay
-      console.log('wanted games');
+      // console.log('wanted games');
       dispatch(addWantedGame());
     }
   };

@@ -30,7 +30,7 @@ const user = (store) => (next) => (action) => {
           alert('Connexion réussie !');
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
           alert('Identifiants incorrects');
         });
 
@@ -63,11 +63,11 @@ const user = (store) => (next) => (action) => {
         password: password,
       })
         .then((response) => {
-          console.log(response.data.pseudo);
+          // console.log(response.data.pseudo);
           alert('Votre compte a bien été créé');
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
 
       next(action);
@@ -87,7 +87,7 @@ const user = (store) => (next) => (action) => {
           store.dispatch(loadDatas(currentUser));
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
 
       next(action);
@@ -111,7 +111,7 @@ const user = (store) => (next) => (action) => {
           store.dispatch(foundUserDatas());
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
 
       next(action);
@@ -150,7 +150,7 @@ const user = (store) => (next) => (action) => {
           store.dispatch(foundUserDatas());
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
 
       next(action);
