@@ -29,6 +29,8 @@ const players = (store) => (next) => (action) => {
         `${URL}players/search`,
         {
           nickname: searchedPlayer,
+          discord_tag: searchedPlayer,
+          game: searchedPlayer,
         },
         {
           headers: {
