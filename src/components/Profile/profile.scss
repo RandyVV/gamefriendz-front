@@ -1,0 +1,191 @@
+@use 'src/styles/vars';
+
+.profile {
+  margin: 1em auto 1em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width:70%;
+  color: vars.$light-color;
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: vars.$bg-dark-color;
+    width: 90% ;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+
+    &-bg {
+      background-image: url(https://wallpapercave.com/wp/wp6856179.jpg);
+      position: relative;
+      z-index:1;
+      filter: grayscale(50%);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 20em;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom: 3px solid vars.$light-color;
+
+      &:hover {
+        filter: grayscale(0%);
+      }
+    }
+
+    &-img {
+      max-width:150px;
+    }
+
+    &-info{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 5em;
+    }
+  }
+
+  &-img{
+    border-radius: 50%;
+    border: 3px solid vars.$light-color;
+    transform: translateY(50%);
+  }
+
+  &-title {
+    color: vars.$light-color;
+    font-size: 2.2em;
+  }
+
+  &-infos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 30%;
+    margin: 1em auto 1em;
+  }
+
+  &-label {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: lightgray;
+    width: 100%;
+    margin-bottom: 0.5em;
+    font-size: 0.8em;
+    text-transform: uppercase;
+  }
+
+  &-input {
+    background-color: vars.$bg-dark-color;
+    border-bottom: 1px solid vars.$light-color;
+    margin-bottom: 1em;
+    color: vars.$light-color;
+    font-size: 1.5em;
+  }
+
+  &-games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    margin: vars.$gutter;
+
+    &-wrapper {
+      max-width: 50%;
+      padding-left: vars.$gutter;
+    }
+
+    &-wrappertwo {
+      max-width: 50%;
+      border-left: 1px solid vars.$light-color;
+      padding-left: vars.$gutter;
+    }
+  }
+
+  &-subtitle {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    text-align: center;
+  }
+
+  &-lasttitle {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    display: flex;
+  }
+  
+  &-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-item {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: lightgray;
+
+    &-button {
+      margin: 0.8em 0 0.8em 3em;
+      background-color: vars.$light-color;
+      border: 1px solid vars.$light-color;
+      border-radius: 3px;
+      color: vars.$bg-dark-color;
+      font-weight: 500;
+      font-size: 0.8em;
+      padding: 3px 10px;
+  
+      &:hover {
+        border: 1px solid vars.$light-color;
+        background-color: transparent;
+        color: vars.$light-color;
+      } 
+    }
+  }
+}
+
+.players-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 640px ) {
+  .profile {
+    width: 100%;
+
+    &-infos {
+      width: 80%;
+    }
+    &-item {
+      margin-bottom: 1em;
+    }
+
+    &-games {
+      display: flex;
+      width: 85%;
+
+      &-wrapper {
+        max-width: 90%;
+        padding-left: 0;
+
+      }
+  
+      &-wrappertwo {
+        max-width: 90%;
+        padding-left: 0;
+        border-left: none;
+      }
+    }
+  }
+}
