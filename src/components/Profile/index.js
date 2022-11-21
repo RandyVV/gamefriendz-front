@@ -115,7 +115,7 @@ function Profile() {
                 <h2 className="profile-subtitle">Mes jeux</h2>
                 {!loading && (
                 <ul className="profile-list">
-                  {currentUser.owned_games.map((owned_game) => <li className="profile-item" key={owned_game.id}>{owned_game.game.title} - {owned_game.platform.name}</li>)}
+                  {player.owned_games.map((owned_game) => <li className="profile-item" key={owned_game.id}>{owned_game.game.title} - {owned_game.platform.name}</li>)}
                 </ul>
                 )}
               </div>
@@ -123,7 +123,7 @@ function Profile() {
                 <h2 className="profile-subtitle">Mes envies</h2>
                 {!loading && (
                 <ul className="profile-list">
-                  {currentUser.wants_to_play.map((want_to_play) => <li className="profile-item" key={want_to_play.id}>{want_to_play.game.title} - {want_to_play.platform.name}</li>)}
+                  {player.wants_to_play.map((want_to_play) => <li className="profile-item" key={want_to_play.id}>{want_to_play.game.title} - {want_to_play.platform.name}</li>)}
                 </ul>
                 )}
               </div>
