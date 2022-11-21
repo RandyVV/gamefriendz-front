@@ -36,7 +36,7 @@ function About() {
           <span className="text-sm text-gray-500 italic">Dev Front</span>
         </div>
       </div>
-      <p className="text-xl m-20 text-center">"En tant que passionnés de jeux vidéos sur toutes plateformes, notre objéctif était clair: créer une application permettant de fusionner toutes les communautés en une, et vous permettre de trouver des coéquipiers sur n'importe quel jeu et n'importe quelle plateforme !"</p>
+      <p className="text-xl m-20 text-center">"En tant que passionnés de jeux vidéos sur toutes plateformes, notre objectif était clair: créer une application permettant de fusionner toutes les communautés en une, et vous permettre de trouver des coéquipiers sur n'importe quel jeu et n'importe quelle plateforme !"</p>
     </div>
   );
 }

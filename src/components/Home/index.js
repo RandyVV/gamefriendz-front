@@ -46,7 +46,7 @@ function Home() {
             <div className="home-text">
               <h1 className="home-text-title">Bienvenue sur Game FriendZ</h1>
               <p>Ici, tu pourras trouver facilement de meilleurs coéquipiers au sein d'une communauté de gamers aguerris !</p>
-              <p className="home-text-sub">Crées ton profil, invites d'autres joueurs et montes ton équipe sur un même outil !</p>
+              <p className="home-text-sub">Crée ton profil, invite d'autres joueurs et monte ton équipe sur un même outil !</p>
               <p className="home-text-sub">Sur toutes les plateformes et sur de nombreux jeux, tu trouveras quelqu'un avec qui échanger.</p>
             </div>
             <div className="home-platform">
