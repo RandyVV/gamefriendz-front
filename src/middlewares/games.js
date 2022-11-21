@@ -22,7 +22,7 @@ const games = (store) => (next) => (action) => {
           store.dispatch(saveGames(response.data));
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
 
       next(action);
@@ -35,7 +35,7 @@ const games = (store) => (next) => (action) => {
           store.dispatch(saveGames([response.data]));
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
 
       next(action);
@@ -47,7 +47,7 @@ const games = (store) => (next) => (action) => {
           store.dispatch(savePlatform(response.data));
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
 
       next(action);
@@ -63,7 +63,7 @@ const games = (store) => (next) => (action) => {
           store.dispatch(saveGames(response.data));
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
 
       next(action);
@@ -86,12 +86,13 @@ const games = (store) => (next) => (action) => {
           },
         },
       )
-        .then((response) => {
-          console.log(response.data);
+        .then(() => {
+          // console.log(response.data);
           alert('Le jeu a bien été ajouté à la liste !');
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
+          alert('Malheureusement une erreur c\'est produite...');
         });
 
       next(action);
@@ -101,7 +102,7 @@ const games = (store) => (next) => (action) => {
       const token = localStorage.getItem('USER_TOKEN');
       const { games: { gameIdToRemove } } = store.getState();
       const { user: { currentUser: { id } } } = store.getState();
-      console.log(gameIdToRemove);
+      // console.log(gameIdToRemove);
       axios.delete(
         `${URL}players/${id}/ownedgames`,
         {
@@ -113,13 +114,14 @@ const games = (store) => (next) => (action) => {
           },
         },
       )
-        .then((response) => {
-          console.log(response.data);
+        .then(() => {
+          // console.log(response.data);
           store.dispatch(foundUserDatas());
           alert('Le jeu a bien été supprimé de la liste !');
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
+          alert('Malheureusement une erreur c\'est produite...');
         });
 
       next(action);
@@ -142,12 +144,13 @@ const games = (store) => (next) => (action) => {
           },
         },
       )
-        .then((response) => {
-          console.log(response.data);
+        .then(() => {
+          // console.log(response.data);
           alert('Le jeu a été ajouté à la liste d\'envies !');
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
+          alert('Malheureusement une erreur c\'est produite...');
         });
 
       next(action);
@@ -175,7 +178,8 @@ const games = (store) => (next) => (action) => {
           alert('Le jeu a bien été retiré de la liste !');
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
+          alert('Malheureusement une erreur c\'est produite...');
         });
 
       next(action);
