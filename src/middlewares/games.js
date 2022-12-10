@@ -14,7 +14,7 @@ import {
 import { foundUserDatas } from '../actions/user';
 
 const games = (store) => (next) => (action) => {
-  const URL = 'https://randyvv-server.eddi.cloud/api/';
+  const URL = '//back.gamefriendz.com/api/';
   switch (action.type) {
     case FETCH_GAMES: {
       axios.get(`${URL}games`)

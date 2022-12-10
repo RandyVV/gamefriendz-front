@@ -73,7 +73,7 @@ function Footer() {
         <span className="text-sm text-white sm:text-center">© 2022 <Link to="/" className="hover:underline hover:text-primary">Game FriendZ™</Link>. Tous droits réservés.
         </span>
         <div className={userAdmin ? 'menu-back' : 'menu-back hidden'}>
-          <span className="text-sm text-white sm:text-center hover:underline hover:text-primary"><a href="http://randyvv-server.eddi.cloud/backoffice">Vers le Back-Office</a></span>
+          <span className="text-sm text-white sm:text-center hover:underline hover:text-primary"><a href="//back.gamefriendz.com/backoffice">Vers le Back-Office</a></span>
         </div>
         <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
           <Link to="/facebook" className="text-white hover:underline hover:text-primary">
