@@ -67,6 +67,13 @@ function Search() {
               </select>
             </label>
             <button className="search-form-button" type="submit"> Rechercher </button>
+            <p class="my-3 text-center">
+              {
+                (gameLoading || games.length === 0)
+                  ? "Désolé, il n'y a aucun résultat"
+                  : `Il y a ${games.length} résultat${games.length > 1 ? 's' : ''}`
+              }
+            </p>
           </form>
         </div>
         {!gameLoading && (
@@ -87,6 +94,13 @@ function Search() {
               <input className="search-form-input" type="text" name="searchedPlayer" onChange={handleChange} />
             </label>
             <button className="search-form-button" type="submit"> Rechercher </button>
+            <p class="my-3 text-center">
+              {
+                (loadingPlayers || players.length === 0)
+                  ? "Désolé, il n'y a aucun résultat"
+                  : `Il y a ${players.length} résultat${players.length > 1 ? 's' : ''}`
+              }
+            </p>
           </form>
         </div>
         {!loadingPlayers && (
