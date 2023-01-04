@@ -56,7 +56,6 @@
   }
 
   &-platform {
-    width: 50%;
     height: vars.$gutter *1.2;
     margin-bottom: vars.$gutter *0.8;
     background-color: transparent;
@@ -108,14 +107,9 @@
     width: 100%;
     margin: auto;
 
-    &-form-label {
+    &-form-label, &-form-selector {
       width: 80%;
       margin: 0 auto;
-    }
-
-    &-form-selector {
-      width: 100%;
-      margin-left : 3em;
     }
 
     &-form-button {
